@@ -24,7 +24,7 @@
                 <configuration>
                     <nodeVersion>v6.10.1</nodeVersion>
                     <npmVersion>4.4.1</npmVersion>
-                    <workingDirectory>src/main/frontend</workingDirectory>
+                    <workingDirectory>organizer</workingDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -69,7 +69,7 @@
                             <outputDirectory>${basedir}/target/classes/static/node_modules/bootstrap</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>src/main/frontend/node_modules/bootstrap</directory>
+                                    <directory>organizer/node_modules/bootstrap</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
