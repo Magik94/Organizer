@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "../target/frontend",
       "assets": [
         "assets",
         "favicon.ico"
@@ -19,9 +19,19 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../css/sb-admin.css",
+        "../node_modules/morris.js/morris.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../js/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/raphael/raphael.js",
+        "../node_modules/morris.js/morris.js"
+
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

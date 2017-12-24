@@ -24,7 +24,11 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14",
-    "bootstrap": "3.3.7"
+    "bootstrap": "3.3.7",
+    "morris-data": "0.5.1",
+    "morris.js": "0.5.0",
+    "raphael": "2.2.7",
+    "font-awesome": "4.7.0"
   },
   "devDependencies": {
     "@angular/cli": "1.6.1",
