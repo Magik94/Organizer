@@ -3,14 +3,15 @@ package pl.szul.organizer.day.query;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
 @Document(collection = "day")
-@NoArgsConstructor
 @Getter
+@Setter
 public class DayDocument {
     @Id
     private String id;
@@ -22,4 +23,6 @@ public class DayDocument {
     private Integer dayOfWeek;
     private String nextDay;
     private String previousDay;
+
+
 }

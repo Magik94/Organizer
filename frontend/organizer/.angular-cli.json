@@ -20,7 +20,6 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../css/sb-admin.css",
         "../node_modules/morris.js/morris.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "styles.css"
