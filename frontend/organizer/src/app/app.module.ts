@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {RoutingModule} from "./routing/routing.module";
+import {CalendarModule} from "angular-calendar";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import {RoutingModule} from "./routing/routing.module";
   ],
   imports: [
     BrowserModule,
-    RoutingModule
+    RoutingModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

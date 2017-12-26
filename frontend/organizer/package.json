@@ -28,7 +28,8 @@
     "morris-data": "0.5.1",
     "morris.js": "0.5.0",
     "raphael": "2.2.7",
-    "font-awesome": "4.7.0"
+    "font-awesome": "4.7.0",
+    "angular-calendar": "0.22.3"
   },
   "devDependencies": {
     "@angular/cli": "1.6.1",
