@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {RoutingModule} from "./routing/routing.module";
-import {CalendarModule} from "angular-calendar";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
@@ -15,8 +14,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   imports: [
     BrowserModule,
     RoutingModule,
-    BrowserAnimationsModule,
-    CalendarModule.forRoot()
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

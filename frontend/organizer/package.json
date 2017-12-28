@@ -29,7 +29,8 @@
     "morris.js": "0.5.0",
     "raphael": "2.2.7",
     "font-awesome": "4.7.0",
-    "angular-calendar": "0.22.3"
+    "angular-calendar": "0.22.3",
+    "@ng-bootstrap/ng-bootstrap": "1.0.0-beta.6"
   },
   "devDependencies": {
     "@angular/cli": "1.6.1",
