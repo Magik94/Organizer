@@ -4,11 +4,13 @@ import {RouterModule, Routes} from "@angular/router";
 import {DashboardComponent} from "../dashboard/dashboard.component";
 import {TaskAddComponent} from "../task/task-add.component";
 import {DemoModule} from "../demo/module";
+import {CalendarComponent} from "../calendar/calendar.component";
 
 
 const routes: Routes = [
   { path: '', component: DashboardComponent},
-  { path: 'task/add', component: TaskAddComponent}
+  { path: 'task/add', component: TaskAddComponent},
+  { path: 'calendar', component: CalendarComponent}
 
   ];
 
@@ -22,7 +24,8 @@ const routes: Routes = [
     exports: [RouterModule],
   declarations: [
     DashboardComponent,
-    TaskAddComponent
+    TaskAddComponent,
+    CalendarComponent
   ]
 })
 export class RoutingModule { }

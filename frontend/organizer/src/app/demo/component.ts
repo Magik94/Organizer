@@ -2,7 +2,7 @@ import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
-  TemplateRef
+  TemplateRef, OnInit
 } from '@angular/core';
 import {
   startOfDay,
@@ -43,10 +43,12 @@ const colors: any = {
   styleUrls: ['styles.css'],
   templateUrl: 'template.html'
 })
-export class DemoComponent {
+export class DemoComponent implements OnInit{
   @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view: string = 'month';
+
+  events: CalendarEvent[];
 
   viewDate: Date = new Date();
 
@@ -73,39 +75,28 @@ export class DemoComponent {
 
   refresh: Subject<any> = new Subject();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
+
+  ngOnInit(): void {
+    this.events = [
+      {
+        start: startOfDay(new Date()),
+        // end: addDays(new Date(), 1),
+        title: 'A 3 day event',
+        color: colors.red,
+        actions: this.actions
       },
-      draggable: true
-    }
-  ];
+      {
+        start: startOfDay(new Date()),
+        // end: addDays(new Date(), 1),
+        title: 'A 3 day event',
+        color: colors.yellow  ,
+        actions: this.actions
+      }
+    ];
+
+
+  }
+
 
   activeDayIsOpen: boolean = true;
 
@@ -141,18 +132,4 @@ export class DemoComponent {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
-    this.events.push({
-      title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      }
-    });
-    this.refresh.next();
-  }
 }
