@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DemoComponent} from "../demo/component";
+import {DemoComponent} from "../calendar/calendar-template/demo/component";
+
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +9,8 @@ import {DemoComponent} from "../demo/component";
   providers:[DemoComponent]
 })
 export class DashboardComponent implements OnInit {
+
+
 
   constructor() { }
 

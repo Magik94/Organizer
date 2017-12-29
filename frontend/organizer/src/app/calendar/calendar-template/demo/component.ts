@@ -23,15 +23,15 @@ import {
 } from 'angular-calendar';
 
 const colors: any = {
-  red: {
+  done: {
     primary: '#ad2121',
     secondary: '#FAE3E3'
   },
-  blue: {
+  inProgress: {
     primary: '#1e90ff',
     secondary: '#D1E8FF'
   },
-  yellow: {
+  backlog: {
     primary: '#e3bc08',
     secondary: '#FDF1BA'
   }
@@ -60,7 +60,7 @@ export class DemoComponent implements OnInit{
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fa fa-fw fa-pencil"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
+      onClick: ({ event }: { event: CalendarEvent }): void => { //todo tutaj podpiac edycje
         this.handleEvent('Edited', event);
       }
     },
@@ -82,14 +82,14 @@ export class DemoComponent implements OnInit{
         start: startOfDay(new Date()),
         // end: addDays(new Date(), 1),
         title: 'A 3 day event',
-        color: colors.red,
+        color: colors.done,
         actions: this.actions
       },
       {
         start: startOfDay(new Date()),
         // end: addDays(new Date(), 1),
         title: 'A 3 day event',
-        color: colors.yellow  ,
+        color: colors.backlog  ,
         actions: this.actions
       }
     ];
@@ -129,7 +129,7 @@ export class DemoComponent implements OnInit{
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.modal.open(this.modalContent, { size: 'sm' });
   }
 
 }

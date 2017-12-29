@@ -29,7 +29,6 @@ export const DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
       <div class="form-group">
         <div class="input-group">
           <input
-            readonly
             class="form-control"
             [placeholder]="placeholder"
             name="date"

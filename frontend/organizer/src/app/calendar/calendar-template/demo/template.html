@@ -29,13 +29,13 @@
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="activeDayIsOpen = false">
-        Previous
+        Poprzedni
       </div>
       <div
         class="btn btn-outline-secondary"
         mwlCalendarToday
         [(viewDate)]="viewDate">
-        Today
+        Dzisiaj
       </div>
       <div
         class="btn btn-primary"
@@ -43,12 +43,12 @@
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="activeDayIsOpen = false">
-        Next
+        Następny
       </div>
     </div>
   </div>
   <div class="col-md-4">
-    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'pl' }}</h3>
   </div>
   <div class="col-md-4">
     <div class="btn-group">
@@ -56,19 +56,19 @@
         class="btn btn-primary"
         (click)="view = 'month'"
         [class.active]="view === 'month'">
-        Month
+        Miesiąc
       </div>
       <div
         class="btn btn-primary"
         (click)="view = 'week'"
         [class.active]="view === 'week'">
-        Week
+        Tydzień
       </div>
       <div
         class="btn btn-primary"
         (click)="view = 'day'"
         [class.active]="view === 'day'">
-        Day
+        Dzień
       </div>
     </div>
   </div>
@@ -80,6 +80,7 @@
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
+    [locale] ="'pl'"
     [activeDayIsOpen]="activeDayIsOpen"
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
@@ -89,6 +90,7 @@
     *ngSwitchCase="'week'"
     [viewDate]="viewDate"
     [events]="events"
+    [locale] ="'pl'"
     [refresh]="refresh"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)">
@@ -97,6 +99,7 @@
     *ngSwitchCase="'day'"
     [viewDate]="viewDate"
     [events]="events"
+    [locale] ="'pl'"
     [refresh]="refresh"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)">

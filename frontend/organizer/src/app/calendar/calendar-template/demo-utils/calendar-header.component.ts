@@ -12,14 +12,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Previous
+            Poprzedni
           </div>
           <div
             class="btn btn-outline-secondary"
             mwlCalendarToday
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Today
+            Dzisiaj
           </div>
           <div
             class="btn btn-primary"
@@ -27,7 +27,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="viewDateChange.next(viewDate)">
-            Next
+            Następny
           </div>
         </div>
       </div>
@@ -40,19 +40,19 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
             class="btn btn-primary"
             (click)="viewChange.emit('month')"
             [class.active]="view === 'month'">
-            Month
+            Miesiąc
           </div>
           <div
             class="btn btn-primary"
             (click)="viewChange.emit('week')"
             [class.active]="view === 'week'">
-            Week
+            Tydzień
           </div>
           <div
             class="btn btn-primary"
             (click)="viewChange.emit('day')"
             [class.active]="view === 'day'">
-            Day
+            Dzień
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@ export class CalendarHeaderComponent {
 
   @Input() viewDate: Date;
 
-  @Input() locale: string = 'en';
+  @Input() locale: string = 'pl';
 
   @Output() viewChange: EventEmitter<string> = new EventEmitter();
 
