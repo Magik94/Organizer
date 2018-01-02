@@ -1,5 +1,40 @@
 <div id="page-wrapper">
   <div class="container-fluid">
+    <div class="col-lg-7">
+
+    <div class="row"><h1>Kalendarz</h1>
+
+    </div>
+    <button class="btn btn-default" (click)="previousMonth()">Poprzedni</button>
+    <button class="btn btn-default" (click)="currentDay()">Dzisiaj</button>
+    <button class="btn btn-default" (click)="nextMonth()">Następny</button>
+    <div class="row">
+      <div class="col-xs-1"><b>Tydzien</b></div>
+      <div *ngFor="let name of dayNames" class="col-xs-1 call-size">
+        <div class="call-margin"><b>{{ name }}</b></div>
+      </div>
+
+    </div>
+
+
+    <div class="row" *ngFor="let item of grid | iterable">
+      <hr>
+      <div class="col-xs-1 call-size">
+        <div class="call-margin"><b>{{item.value}}</b></div>
+      </div>
+      <div *ngFor="let day of item.key" (click)="select(day)" class="col-xs-1 call-size"
+           [style.background-color]="day.currentDay?'#EFEFEF':'' || (!day.isNullable && day.selected?'#F9F9F9':'')">
+        <div [hidden]="day.isNullable" class="call-margin">
+          {{ day.dayNumber }}
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+    <div class="col-xs-5">
+      <app-task-add [startDate]="dateSelected"></app-task-add>
+    </div>
 
 
   </div>

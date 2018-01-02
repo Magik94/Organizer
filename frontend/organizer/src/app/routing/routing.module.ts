@@ -7,13 +7,14 @@ import {CalendarComponent} from "../calendar/calendar.component";
 import { FormsModule } from '@angular/forms';
 import {NgbModalModule, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
+import {IterablePipe} from "../calendar/IterablePipe";
 
 
 
 const routes: Routes = [
   { path: '', component: DashboardComponent},
   { path: 'task/add', component: TaskAddComponent},
-  { path: 'calendar', component: CalendarComponent}
+  { path: 'calendar', component: CalendarComponent, }
 
   ];
 
@@ -34,7 +35,9 @@ const routes: Routes = [
   declarations: [
     DashboardComponent,
     TaskAddComponent,
-    CalendarComponent
+    CalendarComponent,
+    IterablePipe
   ]
+
 })
 export class RoutingModule { }

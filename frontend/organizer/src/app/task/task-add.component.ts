@@ -1,20 +1,29 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Task} from "./task";
+import {log} from "util";
 
 @Component({
   selector: 'app-task-add',
   templateUrl: './task-add.component.html',
   styleUrls: ['./task-add.component.css'],
 })
-export class TaskAddComponent implements OnInit {
+export class TaskAddComponent implements OnInit,OnChanges {
 
-  @Input() task:Task;
+  task:Task =new Task();
+  @Input() startDate:Date;
 
 
   constructor() {
       }
   ngOnInit() {
     this.task = new Task();
+    this.task.startDate=this.startDate;
+  }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.task.startDate=changes['startDate'].currentValue;
+
   }
 
   send(){

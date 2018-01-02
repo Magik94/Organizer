@@ -1,0 +1,14 @@
+.call-margin{
+  position: relative;top: 30%;
+  transform: translateY(-50%);
+  transform: translateX(40%);
+
+}
+
+.call-size{
+  height: 6vh;
+  width:5vw;
+  border-radius: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
+}

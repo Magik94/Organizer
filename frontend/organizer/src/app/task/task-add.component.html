@@ -36,8 +36,16 @@
       </div>
 
 
+      <div class="form-group">
+        <label for="startDate">Data początkowa:</label>
+        <input type="text" class="form-control" id="startDate" [ngModel]="task.startDate   | date:'y-MM-dd'"
+               name="startDate"
+               required>
+      </div>
 
-      <button type="submit" class="btn btn-warning col-xs-12" (click)="send()">Wystaw!
+
+
+      <button type="submit" class="btn btn-warning col-xs-12" (click)="send()">Dodaj zadanie!
       </button>
 
     </form>
