@@ -9,6 +9,7 @@ import {NgbModalModule, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
 import {IterablePipe} from "../calendar/IterablePipe";
 import {EventComponent} from "../calendar/menu/event/event.component";
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -29,7 +30,8 @@ const routes: Routes = [
     NgbModule,
     NgbModalModule.forRoot(),
     NgbModule.forRoot(),
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
 
   ],
     exports: [RouterModule],

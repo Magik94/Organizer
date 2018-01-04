@@ -1,8 +1,10 @@
 package pl.szul.organizer.task.domain.endpoint;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import pl.szul.organizer.task.domain.TaskFacade;
 import pl.szul.organizer.task.domain.dto.TaskDto;
@@ -17,7 +19,8 @@ class TaskController {
         taskFacade = pTaskFacade;
     }
 
-    @PostMapping
+    @PostMapping()
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addTask(@RequestBody TaskDto pTaskDto){
         taskFacade.addTask(pTaskDto);
     }

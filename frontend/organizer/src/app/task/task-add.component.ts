@@ -11,23 +11,21 @@ import {TaskService} from "./task.service";
 export class TaskAddComponent implements OnInit,OnChanges {
 
   task:Task =new Task();
-  @Input() startDate:Date;
+  @Input() selectDate:Date;
   taskService:TaskService;
 
 
   constructor(taskSevice:TaskService) {
-
     this.taskService=taskSevice;
     }
   ngOnInit() {
     this.task = new Task();
-    this.task.startDate=this.startDate;
+    this.task.startDate=this.selectDate;
   }
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.task.startDate=changes['startDate'].currentValue;
-
+    this.task.startDate=changes['selectDate'].currentValue;
   }
 
   send(){

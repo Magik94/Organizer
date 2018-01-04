@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy, Component, Input, OnChanges, OnInit,
   SimpleChanges
 } from '@angular/core';
-import {Task} from "../../../task/task";
 
 @Component({
   selector: 'app-event',
@@ -10,24 +9,16 @@ import {Task} from "../../../task/task";
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./event.component.css']
 })
-export class EventComponent implements OnInit, OnChanges {
-  task = new Task();
-  @Input() startDate:Date;
+export class EventComponent implements OnInit {
+  @Input() selectDate:Date;
 
   constructor() { }
 
   ngOnInit() {
-    this.task = new Task();
-    this.task.startDate=this.startDate;
-
-  }
-
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.task.startDate=changes['startDate'].currentValue;
 
 
   }
+
 
 
 }

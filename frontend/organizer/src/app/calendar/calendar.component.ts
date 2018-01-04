@@ -7,18 +7,18 @@ import {log} from "util";
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./calendar.component.css']
 
 })
 export class CalendarComponent implements OnInit {
 
-  private dayNames:String[] = ["pon","wt","śr","cz","pt","so","nd"];
+   dayNames:String[] = ["pon","wt","śr","cz","pt","so","nd"];
 
-  private date:Date;
-  private firstDayOfMonth: Date;
-  private grid:Map<number,Day[]>;
-  private dateSelected =new Date();
+   date:Date;
+   firstDayOfMonth: Date;
+   grid:Map<number,Day[]>;
+   dateSelected =new Date();
   constructor() {
 
   }
