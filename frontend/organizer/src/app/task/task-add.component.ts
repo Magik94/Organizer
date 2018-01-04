@@ -1,20 +1,24 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Task} from "./task";
-import {log} from "util";
+import {TaskService} from "./task.service";
 
 @Component({
   selector: 'app-task-add',
   templateUrl: './task-add.component.html',
   styleUrls: ['./task-add.component.css'],
+  providers: [TaskService]
 })
 export class TaskAddComponent implements OnInit,OnChanges {
 
   task:Task =new Task();
   @Input() startDate:Date;
+  taskService:TaskService;
 
 
-  constructor() {
-      }
+  constructor(taskSevice:TaskService) {
+
+    this.taskService=taskSevice;
+    }
   ngOnInit() {
     this.task = new Task();
     this.task.startDate=this.startDate;
@@ -27,7 +31,8 @@ export class TaskAddComponent implements OnInit,OnChanges {
   }
 
   send(){
-    alert(this.task.title +" " +this.task.status +" " +this.task.description + " "+ this.task.startDate.toDateString() )
+    this.taskService.add(this.task);
+
   }
 
 

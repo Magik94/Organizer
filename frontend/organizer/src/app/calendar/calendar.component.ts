@@ -8,7 +8,7 @@ import {log} from "util";
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./calendar.component.css'],
+  styleUrls: ['./calendar.component.css']
 
 })
 export class CalendarComponent implements OnInit {

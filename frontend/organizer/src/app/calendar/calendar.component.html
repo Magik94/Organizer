@@ -23,7 +23,7 @@
         <div class="call-margin"><b>{{item.value}}</b></div>
       </div>
       <div *ngFor="let day of item.key" (click)="select(day)" class="col-xs-1 call-size"
-           [style.background-color]="day.currentDay?'#EFEFEF':'' || (!day.isNullable && day.selected?'#F9F9F9':'')">
+           [style.background-color]="day.currentDay?'#EFEFEF':'' || (!day.isNullable && day.selected?'#9A9A9A':'')">
         <div [hidden]="day.isNullable" class="call-margin">
           {{ day.dayNumber }}
         </div>
@@ -33,7 +33,7 @@
 
     </div>
     <div class="col-xs-5">
-      <app-task-add [startDate]="dateSelected"></app-task-add>
+      <app-event [startDate]="dateSelected"></app-event>
     </div>
 
 

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import {NgbModalModule, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
 import {IterablePipe} from "../calendar/IterablePipe";
+import {EventComponent} from "../calendar/menu/event/event.component";
 
 
 
@@ -36,7 +37,8 @@ const routes: Routes = [
     DashboardComponent,
     TaskAddComponent,
     CalendarComponent,
-    IterablePipe
+    IterablePipe,
+    EventComponent
   ]
 
 })
