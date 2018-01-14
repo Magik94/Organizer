@@ -1,71 +1,97 @@
 import {
-  ChangeDetectionStrategy, Component, Input, OnInit
+  ChangeDetectionStrategy, Component, Input, NgZone, OnInit
 } from '@angular/core';
 import {log} from "util";
+import {CalendarService, Get} from "./calendar.service";
+import {Task} from "../task/task";
+import {Observable} from "rxjs/Observable";
 
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./calendar.component.css']
+  changeDetection: ChangeDetectionStrategy.Default,
+  styleUrls: ['./calendar.component.css'],
+  providers: [CalendarService]
 
 })
 export class CalendarComponent implements OnInit {
 
-   dayNames:String[] = ["pon","wt","śr","cz","pt","so","nd"];
+  dayNames: String[] = ["pon", "wt", "śr", "cz", "pt", "so", "nd"];
 
-   date:Date;
-   firstDayOfMonth: Date;
-   grid:Map<number,Day[]>;
-   dateSelected =new Date();
-  constructor() {
+  date: Date;
+  firstDayOfMonth: Date;
+  grid: Map<number, Day[]>;
+  dateSelected = new Date();
+  calendarService: CalendarService;
 
+  constructor(calendarService: CalendarService) {
+    this.calendarService = calendarService;
   }
 
-  currentDay(){
+  currentDay() {
     this.generateCalendar(new Date());
   }
 
-  previousMonth(){
-    this.firstDayOfMonth.setMonth(this.firstDayOfMonth.getMonth()-2);
-    this.generateCalendar(this.firstDayOfMonth);
-  }
-  nextMonth(){
+  previousMonth() {
+    this.firstDayOfMonth.setMonth(this.firstDayOfMonth.getMonth() - 2);
     this.generateCalendar(this.firstDayOfMonth);
   }
 
-  private generateCalendar(date:Date) {
+  nextMonth() {
+    this.generateCalendar(this.firstDayOfMonth);
+  }
+
+  private generateCalendar(date: Date) {
     this.date = date;
     this.firstDayOfMonth = new Date(this.date.getFullYear(), this.date.getMonth());
     this.grid = new Map();
     for (let i of [1, 2, 3, 4, 5, 6]) {
       this.grid.set(i, this.getWeek());
     }
+
+    this.grid.forEach((value: Day[], key: number) => {
+      value.forEach((day) => {
+        if (day.date !== null) {
+          this.calendarService.checkTaskAvailable(day.date).subscribe((res) => {
+
+                day.isTask = !res.content[0].collectionValue;
+
+
+            }
+          );
+        }
+
+      })
+
+    });
+
+
+
   }
 
   ngOnInit() {
     this.generateCalendar(new Date());
   }
 
-  select(day:Day) {
+  select(day: Day) {
     this.grid.forEach((value: Day[], key: number) => {
-      value.forEach(r=> r.selected=false)
+      value.forEach(r => r.selected = false)
     });
     day.selected = !day.selected;
-    log(this.dateSelected + " vasfasd")
-    this.dateSelected= day.date;
+    this.dateSelected = day.date;
   }
 
 
-  private getWeek():Day[] {
+  private getWeek(): Day[] {
     var date: Day[] = [];
-    for(let dayOfWeek of  [1, 2, 3, 4, 5, 6,7]){
+    for (let dayOfWeek of  [1, 2, 3, 4, 5, 6, 7]) {
       var day = new Date(this.firstDayOfMonth);
-      var dayOfDate=this.firstDayOfMonth.getDay()==0?7:this.firstDayOfMonth.getDay();
-      if(dayOfWeek == dayOfDate && this.firstDayOfMonth.getMonth() == this.date.getMonth()){
-        date.push(new Day(this.firstDayOfMonth.getDate(), false, this.isCurrentDate(),false,day));
-        this.firstDayOfMonth.setDate(this.firstDayOfMonth.getDate()+1);
+      var dayOfDate = this.firstDayOfMonth.getDay() == 0 ? 7 : this.firstDayOfMonth.getDay();
+      if (dayOfWeek == dayOfDate && this.firstDayOfMonth.getMonth() == this.date.getMonth()) {
+        var dayGenerated: Day = new Day(this.firstDayOfMonth.getDate(), false, this.isCurrentDate(), false, day);
+        date.push(dayGenerated);
+        this.firstDayOfMonth.setDate(this.firstDayOfMonth.getDate() + 1);
       } else {
         date.push(this.buildDay());
       }
@@ -73,26 +99,27 @@ export class CalendarComponent implements OnInit {
     return date;
   }
 
-  private isCurrentDate(){
+  private isCurrentDate() {
     var currentDate = new Date();
-    return this.firstDayOfMonth.getDate()== currentDate.getDate() && this.firstDayOfMonth.getMonth() == currentDate.getMonth()
-    && this.firstDayOfMonth.getFullYear() == currentDate.getFullYear();
+    return this.firstDayOfMonth.getDate() == currentDate.getDate() && this.firstDayOfMonth.getMonth() == currentDate.getMonth()
+      && this.firstDayOfMonth.getFullYear() == currentDate.getFullYear();
   }
 
   private buildDay() {
-    return new Day(0, false, false, true,null);
+    return new Day(0, false, false, true, null);
   }
 }
 
-export class Day{
-  dayNumber:number;
-  selected:boolean;
-  currentDay:boolean;
-  isNullable:boolean;
-  date :Date;
+export class Day {
+  dayNumber: number;
+  selected: boolean;
+  currentDay: boolean;
+  isNullable: boolean;
+  date: Date;
+  isTask: boolean;
 
 
-  constructor(dayNumber: number, selected: boolean, currentDay: boolean, isNullable: boolean, date :Date) {
+  constructor(dayNumber: number, selected: boolean, currentDay: boolean, isNullable: boolean, date: Date) {
     this.dayNumber = dayNumber;
     this.selected = selected;
     this.currentDay = currentDay;

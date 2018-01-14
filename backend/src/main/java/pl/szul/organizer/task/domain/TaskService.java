@@ -13,10 +13,11 @@ class TaskService {
         taskRepository.save(TaskDocument.builder()
                 .description(pTaskDto.getDescription())
                 .status(pTaskDto.getStatus())
-                .dateEnd(pTaskDto.getStartDate())
-                .dateStart(pTaskDto.getEndDate())
+                .dateStart(pTaskDto.getStartDate())
+                .dateEnd(pTaskDto.getEndDate())
                 .title(pTaskDto.getTitle())
                 .workedTime(pTaskDto.getWorkedTime().orElse(0L))
+                .dateStartString(pTaskDto.getStartDate().toString())
                 .userId("TestUser") //todo jak bedzie logowanie brac prawdziwe user id
                 .build());
     }

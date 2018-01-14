@@ -1,4 +1,4 @@
-package pl.szul.organizer.task.domain;
+package pl.szul.organizer.task.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,15 +9,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 
-@NoArgsConstructor
-@Builder
-@AllArgsConstructor
+@Getter
 @Setter
 @Document(collection = "task")
-class TaskDocument {
+public class TaskDocument {
 
     @Id
     private String id;
@@ -26,7 +23,7 @@ class TaskDocument {
     private String description;
     private LocalDate dateStart;
     private LocalDate dateEnd;
-    private Long workedTime;
+   // private Long workedTime;
     private String userId;
     private String dateStartString;
 

@@ -26,6 +26,7 @@
            [style.background-color]="day.currentDay?'#EFEFEF':'' || (!day.isNullable && day.selected?'#9A9A9A':'')">
         <div [hidden]="day.isNullable" class="call-margin">
           {{ day.dayNumber }}
+          {{day.isTask}}
         </div>
       </div>
 

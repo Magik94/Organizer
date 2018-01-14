@@ -14,10 +14,10 @@ export class TaskService {
   constructor(private http:HttpClient) { }
 
   add(task: Task) {
-
+    var day=task.startDate.setHours(task.startDate.getHours()+2);
     this.http.post('http://localhost:8080/api/task',{
       title:task.title,
-      startDate: task.startDate,
+      startDate: new Date(day),
       description:task.description,
       status:task.status,
       endDate:task.endDate
