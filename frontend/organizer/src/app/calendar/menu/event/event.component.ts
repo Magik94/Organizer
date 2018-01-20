@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy, Component, Input, OnChanges, OnInit,
   SimpleChanges
 } from '@angular/core';
+import {Get} from "../../calendar.service";
 
 @Component({
   selector: 'app-event',
@@ -11,6 +12,7 @@ import {
 })
 export class EventComponent implements OnInit {
   @Input() selectDate:Date;
+  @Input() taskInDay:Get;
 
   constructor() { }
 

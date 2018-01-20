@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Task} from "./task";
-import {TaskService} from "./task.service";
+import {TaskService} from "../task.service";
+import {Task} from "../task";
+
 
 @Component({
   selector: 'app-task-add',
