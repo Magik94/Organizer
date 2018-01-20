@@ -24,7 +24,7 @@ export class TaskDetailsComponent implements OnInit,OnChanges {
     this.tasks = this.taskInDay;
   }
 
-  openEdit(id:Get){
+  openEdit(id:string){
     alert(id);
     this.showEdit=!(this.showEdit && this.lastSelectId==id);
     this.lastSelectId = id;
