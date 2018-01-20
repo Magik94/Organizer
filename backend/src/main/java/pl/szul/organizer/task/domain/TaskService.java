@@ -17,6 +17,7 @@ class TaskService {
                 .dateEnd(pTaskDto.getEndDate())
                 .title(pTaskDto.getTitle())
                 .workedTime(pTaskDto.getWorkedTime().orElse(0L))
+                .planningTime(pTaskDto.getPlanningTime().orElse(0L))
                 .dateStartString(pTaskDto.getStartDate().toString())
                 .userId("TestUser") //todo jak bedzie logowanie brac prawdziwe user id
                 .build());

@@ -1,9 +1,18 @@
-
-<div>
-  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Dodaj zadanie</button>
-  <div id="demo" class="collapse">
-    <app-task-add [selectDate]="selectDate"></app-task-add>
+<div class="row">
+  <div class="center-block">
+    <b><h1>{{selectDate | date: 'dd/MM/yyyy'}}</h1></b>
   </div>
+</div>
+<div class="row">
+  <div>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Dodaj
+      zadanie
+    </button>
+    <div id="demo" class="collapse">
+      <app-task-add [selectDate]="selectDate"></app-task-add>
+    </div>
 
-  <app-task-details [taskInDay]="taskInDay"></app-task-details>
+
+    <app-task-details [taskInDay]="taskInDay" [selectDate]="selectDate"></app-task-details>
+  </div>
 </div>

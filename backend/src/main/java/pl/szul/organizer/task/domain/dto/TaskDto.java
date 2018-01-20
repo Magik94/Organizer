@@ -17,5 +17,6 @@ public class TaskDto {
 //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate endDate;
     private Optional<Long> workedTime = Optional.empty();
+    private Optional<Long> planningTime = Optional.empty();
 
 }

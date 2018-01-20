@@ -43,7 +43,15 @@
                required>
       </div>
 
+      <div class="form-group">
+        <label for="planningTime">Planowany czas na zadanie:</label>
+        <input type="text" class="form-control" id="planningTime" [(ngModel)]="task.planningTime"   name="planningTime" required>
+      </div>
 
+      <div class="form-group">
+        <label for="workedTime">Czas który spedzono:</label>
+        <input type="text" class="form-control" id="workedTime" [(ngModel)]="task.workedTime"   name="workedTime" required>
+      </div>
 
       <button type="submit" class="btn btn-warning col-xs-12" (click)="send()">Dodaj zadanie!
       </button>

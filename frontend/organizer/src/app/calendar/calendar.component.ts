@@ -57,6 +57,9 @@ export class CalendarComponent implements OnInit {
           this.calendarService.checkTaskAvailable(day.date).subscribe((res) => {
                 day.isTask = !res.content[0].collectionValue;
                 day.tasks = res;
+                if(day.currentDay){
+                  this.taskInDay = day.tasks;
+                }
             }
           );
         }

@@ -50,5 +50,8 @@ export class Item{
   title:string;
   dateStart:string;
   description:string;
-  status:string
+  status:string;
+  workedTime:number;
+  id:string;
+  planningTime:number;
 }

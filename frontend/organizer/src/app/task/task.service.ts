@@ -22,7 +22,9 @@ export class TaskService {
       startDate: new Date(day),
       description: task.description,
       status: task.status,
-      endDate: task.endDate
+      endDate: task.endDate,
+      workedTime: task.workedTime,
+      planningTime: task.planningTime
 
     }, httpOptions).subscribe(
       res => {

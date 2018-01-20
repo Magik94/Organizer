@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="col-lg-7">
 
-    <div class="row"><h1>Kalendarz</h1>
+    <div class="row"><h1>Kalendarz {{date | date: 'MM/yyyy'}}</h1>
 
     </div>
     <button class="btn btn-default" (click)="previousMonth()">Poprzedni</button>

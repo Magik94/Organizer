@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TaskService} from "../task.service";
 import {Task} from "../task";
+import {Get, Item} from "../../calendar/calendar.service";
 
 
 @Component({
@@ -9,33 +10,31 @@ import {Task} from "../task";
   styleUrls: ['./task-add.component.css'],
   providers: [TaskService]
 })
-export class TaskAddComponent implements OnInit,OnChanges {
+export class TaskAddComponent implements OnInit, OnChanges {
 
-  task:Task =new Task();
-  @Input() selectDate:Date;
-  taskService:TaskService;
+  task: Task = new Task();
+  @Input() selectDate: Date;
+  taskService: TaskService;
 
 
-  constructor(taskSevice:TaskService) {
-    this.taskService=taskSevice;
-    }
+  constructor(taskSevice: TaskService) {
+    this.taskService = taskSevice;
+  }
+
   ngOnInit() {
     this.task = new Task();
-    this.task.startDate=this.selectDate;
+    this.task.startDate = this.selectDate;
   }
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.task.startDate=changes['selectDate'].currentValue;
+    this.task.startDate = changes['selectDate'].currentValue;
   }
 
-  send(){
+  send() {
     this.taskService.add(this.task);
 
   }
-
-
-
 
 
 
