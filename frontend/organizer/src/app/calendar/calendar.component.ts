@@ -54,10 +54,7 @@ export class CalendarComponent implements OnInit {
       value.forEach((day) => {
         if (day.date !== null) {
           this.calendarService.checkTaskAvailable(day.date).subscribe((res) => {
-
                 day.isTask = !res.content[0].collectionValue;
-
-
             }
           );
         }

@@ -24,6 +24,7 @@ export class TaskService {
 
     },httpOptions).subscribe(
       res => {
+        alert("Zadanie dodano!!!")
         console.log(res);
       },
       err => {
