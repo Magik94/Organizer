@@ -1,5 +1,3 @@
-
-
 <div class="row" style="margin-top: 20px;margin-bottom: 20px">
   <h4>
     <b>
@@ -21,7 +19,7 @@
 
 
 <div *ngFor="let task of taskInDay?.content" class="row">
-  <a (click)="openEdit(task.id)" [hidden]="task.collectionValue">
+  <a (click)="openEdit(task)" [hidden]="task.collectionValue">
     <div class="col-xs-3">
       {{task?.status}}
     </div>
@@ -38,6 +36,8 @@
 
 </div>
 
-<div  class="collapse" [class.show]="showEdit">
-  dasda
+<div class="collapse" [class.show]="showEdit">
+
+  <app-task-add [task]="task"></app-task-add>
+
 </div>

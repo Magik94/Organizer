@@ -11,6 +11,7 @@ class TaskService {
 
     void addTask(TaskDto pTaskDto) {
         taskRepository.save(TaskDocument.builder()
+                .id(pTaskDto.getId())
                 .description(pTaskDto.getDescription())
                 .status(pTaskDto.getStatus())
                 .dateStart(pTaskDto.getStartDate())

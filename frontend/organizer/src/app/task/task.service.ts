@@ -18,6 +18,7 @@ export class TaskService {
   add(task: Task) {
     var day = task.startDate.setHours(task.startDate.getHours() + 2);
     this.http.post('http://localhost:8080/api/task', {
+      id: task.id,
       title: task.title,
       startDate: new Date(day),
       description: task.description,

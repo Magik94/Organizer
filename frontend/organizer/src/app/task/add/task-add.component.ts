@@ -12,7 +12,8 @@ import {Get, Item} from "../../calendar/calendar.service";
 })
 export class TaskAddComponent implements OnInit, OnChanges {
 
-  task: Task = new Task();
+
+  @Input() task: Task;
   @Input() selectDate: Date;
   taskService: TaskService;
 
@@ -28,7 +29,11 @@ export class TaskAddComponent implements OnInit, OnChanges {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.task.startDate = changes['selectDate'].currentValue;
+    var tmp = changes['selectDate'];
+    if(tmp!=null && this.task!=null){
+      this.task.startDate = tmp.currentValue;;
+    }
+
   }
 
   send() {

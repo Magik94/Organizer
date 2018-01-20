@@ -17,7 +17,7 @@ export class EventComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    this.selectDate = new Date();
 
   }
 

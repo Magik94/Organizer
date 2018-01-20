@@ -9,6 +9,7 @@ import java.util.Optional;
 @Getter
 public class TaskDto {
 
+    private String id;
     private String title;
     private String status;
     private String description;

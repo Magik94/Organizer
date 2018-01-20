@@ -1,8 +1,9 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TaskService} from "../../task.service";
-import {Get} from "../../../calendar/calendar.service";
-import {Task} from "protractor/built/taskScheduler";
+import {Get, Item} from "../../../calendar/calendar.service";
+
 import {tokenReference} from "@angular/compiler";
+import {Task} from "../../task";
 
 @Component({
   selector: 'app-task-details',
@@ -10,27 +11,48 @@ import {tokenReference} from "@angular/compiler";
   styleUrls: ['./task-details.component.css'],
   providers: [TaskService]
 })
-export class TaskDetailsComponent implements OnInit,OnChanges {
+export class TaskDetailsComponent implements OnInit, OnChanges {
 
-  @Input() selectDate:Date;
-  @Input() taskInDay:Get;
-  showEdit:boolean=false;
-  lastSelectId:string;
-  tasks:Get;
+  @Input() selectDate: Date;
+  @Input() taskInDay: Get;
+  showEdit: boolean = false;
+  lastSelectId: string;
+  tasks: Get;
+  task: Task = new Task();
 
-  constructor(taskService:TaskService) { }
+  constructor(private taskService: TaskService) {
+  }
 
   ngOnInit() {
     this.tasks = this.taskInDay;
   }
 
-  openEdit(id:string){
-    alert(id);
-    this.showEdit=!(this.showEdit && this.lastSelectId==id);
-    this.lastSelectId = id;
+  openEdit(id: Item) {
+    this.showEdit = !(this.showEdit && this.lastSelectId == id.id);
+    this.lastSelectId = id.id;
+    this.task = this.map(id);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.tasks=changes['taskInDay'].currentValue;
+    var tmp = changes['taskInDay'];
+    if (tmp != null) {
+      this.tasks = tmp.currentValue;
+
+    }
+  }
+
+  map(task: Item): Task {
+    var tmp = new Task();
+    tmp.id = task.id;
+    tmp.startDate = new Date(task.dateStart);
+    tmp.description = task.description;
+    tmp.title = task.title;
+    tmp.status = task.status;
+    return tmp;
+  }
+
+  send() {
+    this.taskService.add(this.task);
+
   }
 }
