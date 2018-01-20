@@ -23,4 +23,8 @@ class TaskService {
                 .userId("TestUser") //todo jak bedzie logowanie brac prawdziwe user id
                 .build());
     }
+
+    void delete(String id) {
+        taskRepository.delete(id);
+    }
 }

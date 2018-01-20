@@ -51,8 +51,8 @@ export class TaskDetailsComponent implements OnInit, OnChanges {
     return tmp;
   }
 
-  send() {
-    this.taskService.add(this.task);
-
+  remove(id: string){
+    this.tasks.content = this.tasks.content.filter(r=> r.id!=id);
+    this.taskService.remove(id);
   }
 }

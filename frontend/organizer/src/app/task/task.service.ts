@@ -29,14 +29,19 @@ export class TaskService {
 
     }, httpOptions).subscribe(
       res => {
+        location.reload();
         alert("Zadanie dodano!!!")
         console.log(res);
+
       },
       err => {
         alert("Błąd przy dodawaniu zadania!")
 
       }
     );
+  }
+  remove(id:string){
+    this.http.delete('http://localhost:8080/api/task?id='+id, httpOptions).subscribe();
   }
 }
 
