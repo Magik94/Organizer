@@ -1,7 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TaskService} from "../task.service";
 import {Task} from "../task";
-import {Get, Item} from "../../calendar/calendar.service";
 
 
 @Component({
