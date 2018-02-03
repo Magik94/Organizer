@@ -48,4 +48,10 @@ export class Get {
 export class Item{
   collectionValue?: boolean;
   title:string;
+  dateStart:string;
+  description:string;
+  status:string;
+  workedTime:number;
+  id:string;
+  planningTime:number;
 }

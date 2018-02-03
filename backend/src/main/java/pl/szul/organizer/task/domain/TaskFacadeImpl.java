@@ -14,4 +14,9 @@ public class TaskFacadeImpl implements TaskFacade{
     public void addTask(TaskDto pTaskDto) {
         taskService.addTask(pTaskDto);
     }
+
+    @Override
+    public void delete(String pTaskDto) {
+        taskService.delete(pTaskDto);
+    }
 }

@@ -24,6 +24,7 @@ export class CalendarComponent implements OnInit {
   grid: Map<number, Day[]>;
   dateSelected = new Date();
   calendarService: CalendarService;
+  taskInDay:Get;
 
   constructor(calendarService: CalendarService) {
     this.calendarService = calendarService;
@@ -54,10 +55,11 @@ export class CalendarComponent implements OnInit {
       value.forEach((day) => {
         if (day.date !== null) {
           this.calendarService.checkTaskAvailable(day.date).subscribe((res) => {
-
                 day.isTask = !res.content[0].collectionValue;
-
-
+                day.tasks = res;
+                if(day.currentDay){
+                  this.taskInDay = day.tasks;
+                }
             }
           );
         }
@@ -80,6 +82,7 @@ export class CalendarComponent implements OnInit {
     });
     day.selected = !day.selected;
     this.dateSelected = day.date;
+    this.taskInDay = day.tasks;
   }
 
 
@@ -117,6 +120,7 @@ export class Day {
   isNullable: boolean;
   date: Date;
   isTask: boolean;
+  tasks:Get;
 
 
   constructor(dayNumber: number, selected: boolean, currentDay: boolean, isNullable: boolean, date: Date) {

@@ -1,0 +1,19 @@
+.call-margin{
+  /*position: relative;top: 30%;*/
+  /*transform: translateY(-50%);*/
+  /*transform: translateX(40%);*/
+
+}
+.footer-div{
+  /*position: absolute;*/
+  margin-right: 10px;
+  margin-top: 80px;
+
+}
+
+.call-size{
+  height: 175px;
+  /*width:20vw;*/
+  border-radius: 5px;
+  background-color: #a7f3bb;
+}

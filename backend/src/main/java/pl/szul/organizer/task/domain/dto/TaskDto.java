@@ -9,6 +9,7 @@ import java.util.Optional;
 @Getter
 public class TaskDto {
 
+    private String id;
     private String title;
     private String status;
     private String description;
@@ -17,5 +18,6 @@ public class TaskDto {
 //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate endDate;
     private Optional<Long> workedTime = Optional.empty();
+    private Optional<Long> planningTime = Optional.empty();
 
 }

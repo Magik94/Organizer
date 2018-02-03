@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="col-lg-7">
 
-    <div class="row"><h1>Kalendarz</h1>
+    <div class="row"><h1>Kalendarz {{date | date: 'MM/yyyy'}}</h1>
 
     </div>
     <button class="btn btn-default" (click)="previousMonth()">Poprzedni</button>
@@ -23,10 +23,11 @@
         <div class="call-margin"><b>{{item.value}}</b></div>
       </div>
       <div *ngFor="let day of item.key" (click)="select(day)" class="col-xs-1 call-size"
-           [style.background-color]="day.currentDay?'#EFEFEF':'' || (!day.isNullable && day.selected?'#9A9A9A':'')">
+           [style.background-color]="day.currentDay?'#EFEFEF':'' || (!day.isNullable && day.selected?'#9A9A9A':'')
+|| (day.isTask?'#FFF8B7':'')">
         <div [hidden]="day.isNullable" class="call-margin">
           {{ day.dayNumber }}
-          {{day.isTask}}
+
         </div>
       </div>
 
@@ -34,7 +35,7 @@
 
     </div>
     <div class="col-xs-5">
-      <app-event [selectDate]="dateSelected"></app-event>
+      <app-event [selectDate]="dateSelected" [taskInDay]="taskInDay"></app-event>
     </div>
 
 

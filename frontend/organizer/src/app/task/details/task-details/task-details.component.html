@@ -1,0 +1,47 @@
+<div class="row" style="margin-top: 20px;margin-bottom: 20px">
+  <h4>
+    <b>
+      <div class="col-xs-3">
+        Status
+      </div>
+      <div class="col-xs-3">
+        Spedzono
+      </div>
+      <div class="col-xs-3">
+        Nazwa
+      </div>
+      <div class="col-xs-3">
+        Opis
+      </div>
+    </b>
+  </h4>
+</div>
+
+
+<div *ngFor="let task of taskInDay?.content" class="row">
+  <a (click)="openEdit(task)" [hidden]="task.collectionValue">
+    <div class="col-xs-3">
+      {{task?.status}}
+    </div>
+    <div class="col-xs-2">
+      {{task?.workedTime}} z {{task?.planningTime}}
+    </div>
+    <div class="col-xs-3">
+      {{task?.title}}
+    </div>
+    <div class="col-xs-3">
+      {{task?.description}}
+    </div>
+  </a>
+    <div class="col-xs-1" [hidden]="task.collectionValue">
+      <span class="glyphicon glyphicon-remove" (click)="remove(task?.id)"></span>
+    </div>
+
+
+</div>
+
+<div class="collapse" [class.show]="showEdit">
+
+  <app-task-add [task]="task"></app-task-add>
+
+</div>
