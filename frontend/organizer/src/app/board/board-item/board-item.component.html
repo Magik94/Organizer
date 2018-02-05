@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-xs-2">
-      <button type="button" class="btn btn-default btn-sm">
+      <button (click)="previus(task)" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-arrow-left"></span>
       </button>
     </div>
@@ -15,7 +15,7 @@
       <p><i>{{task.description}}</i></p>
     </div>
     <div class="col-xs-1">
-      <button type="button" class="btn btn-default btn-sm">
+      <button (click)="next(task)" type="button" class="btn btn-default btn-sm">
         <span class="glyphicon glyphicon-arrow-right"></span>
       </button>
     </div>

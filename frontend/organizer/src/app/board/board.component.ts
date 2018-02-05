@@ -17,6 +17,20 @@ export class BoardComponent implements OnInit {
   constructor(private taskService: TaskService) {
 
   }
+  changed(t:Task) {
+    this.tasksBacklog = this.tasksBacklog.filter(item => item.id !== t.id);
+    this.tasksInProgress =this.tasksInProgress.filter(item => item.id !== t.id);
+    this.tasksDone =this.tasksDone.filter(item => item.id !== t.id);
+    if (t.status == "Backlog") {
+      this.tasksBacklog.push(t);
+    }
+    if (t.status == "In progress") {
+      this.tasksInProgress.push(t);
+    }
+    if (t.status == "Done") {
+      this.tasksDone.push(t);
+    }
+  }
 
   ngOnInit() {
     this.taskService.getTasks().subscribe(r => {

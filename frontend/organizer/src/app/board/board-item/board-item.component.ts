@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Task} from "../../task/task";
 
 @Component({
@@ -10,10 +10,20 @@ export class BoardItemComponent implements OnInit {
 
   @Input()
   task:Task;
+  @Output()
+  changedTask = new EventEmitter<Task>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  next(task:Task){
+    task.status="Done";
+    this.changedTask.emit(this.task);
+  }
+  previus(task:Task){
+    task.status="Backlog";
+    this.changedTask.emit(this.task);
+  }
 }
