@@ -43,5 +43,9 @@ export class TaskService {
   remove(id:string){
     this.http.delete('http://localhost:8080/api/task?id='+id, httpOptions).subscribe();
   }
+  getTasks():Observable<Task[]> {
+    return this.http.get<Task[]>("http://localhost:8080/api/task",httpOptions);
+
+  }
 }
 

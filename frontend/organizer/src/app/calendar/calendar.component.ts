@@ -54,7 +54,7 @@ export class CalendarComponent implements OnInit {
     this.grid.forEach((value: Day[], key: number) => {
       value.forEach((day) => {
         if (day.date !== null) {
-          this.calendarService.checkTaskAvailable(day.date).subscribe((res) => {
+          this.calendarService.getTaskForDate(day.date).subscribe((res) => {
                 day.isTask = !res.content[0].collectionValue;
                 day.tasks = res;
                 if(day.currentDay){

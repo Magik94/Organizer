@@ -1,18 +1,31 @@
-<div class="call-size call-margin">
+<div class="call-size call-margin"
+     [ngClass]="(task.status=='Backlog')?'call-backlog':(task.status=='Done')?'call-done':'call-in-progress'">
   <div class="row">
     <div class="col-xs-12 text-center">
-      <h4><b>Title</b></h4>
+      <h4><b>{{task.title}}</b></h4>
     </div>
   </div>
-
   <div class="row">
-    <div class="col-xs-12 text-center">
-      <p><i>Description</i></p>
+    <div class="col-xs-2">
+      <button type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+      </button>
+    </div>
+    <div class="col-xs-8 text-center">
+      <p><i>{{task.description}}</i></p>
+    </div>
+    <div class="col-xs-1">
+      <button type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-arrow-right"></span>
+      </button>
     </div>
   </div>
   <div class="row footer-div">
-    <div class="col-xs-12 text-right">
-        <p class="">6/1854</p>
+    <div class="col-xs-6 text-right">
+      Data: <i>{{task.dateStart | date: 'dd/MM/yyyy'}}</i>
+    </div>
+    <div class="col-xs-6 text-right">
+      <p class="">{{task.workedTime}}/{{task.planningTime}}</p>
     </div>
   </div>
 
