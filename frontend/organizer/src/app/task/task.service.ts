@@ -16,7 +16,13 @@ export class TaskService {
   }
 
   add(task: Task) {
-    var day = task.startDate.setHours(task.startDate.getHours() + 2);
+    var day
+    if(task.startDate != null) {
+       day = task.startDate.setHours(task.startDate.getHours() + 2);
+    }
+    else {
+      day =task.dateStart;
+    }
     this.http.post('http://localhost:8080/api/task', {
       id: task.id,
       title: task.title,
@@ -29,9 +35,7 @@ export class TaskService {
 
     }, httpOptions).subscribe(
       res => {
-        location.reload();
-        alert("Zadanie dodano!!!")
-        console.log(res);
+        alert("Operacja zakończoa sukcesem")
 
       },
       err => {

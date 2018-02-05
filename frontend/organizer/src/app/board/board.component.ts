@@ -30,6 +30,7 @@ export class BoardComponent implements OnInit {
     if (t.status == "Done") {
       this.tasksDone.push(t);
     }
+    this.taskService.add(t);
   }
 
   ngOnInit() {

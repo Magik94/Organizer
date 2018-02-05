@@ -19,11 +19,21 @@ export class BoardItemComponent implements OnInit {
   }
 
   next(task:Task){
-    task.status="Done";
+    if (task.status == "Backlog") {
+      task.status="In progress";
+    }else
+    if (task.status == "In progress") {
+      task.status="Done";
+    }
     this.changedTask.emit(this.task);
   }
-  previus(task:Task){
-    task.status="Backlog";
+  previous(task:Task){
+    if (task.status == "Done") {
+      task.status="In progress";
+    }else
+    if (task.status == "In progress") {
+      task.status="Backlog";
+    }
     this.changedTask.emit(this.task);
   }
 }
