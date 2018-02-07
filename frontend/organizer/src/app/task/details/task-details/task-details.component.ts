@@ -48,6 +48,8 @@ export class TaskDetailsComponent implements OnInit, OnChanges {
     tmp.description = task.description;
     tmp.title = task.title;
     tmp.status = task.status;
+    tmp.planningTime = task.planningTime
+    tmp.workedTime = task.workedTime
     return tmp;
   }
 

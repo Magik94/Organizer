@@ -47,10 +47,11 @@ export class Get {
 export class Item{
   collectionValue?: boolean;
   title:string;
-  startDate:string;
+  startDate:Date;
   description:string;
   status:string;
-  workedTime:number;
+  workedTime:Number;
   id:string;
-  planningTime:number;
+  planningTime:Number;
+
 }
