@@ -22,15 +22,19 @@ export class TaskAddComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.task = new Task();
-    this.task.startDate = this.selectDate;
+    if(this.task==null) {
+      this.task = new Task();
+    }
+    if(  this.task.startDate==null) {
+      this.task.startDate = this.selectDate;
+    }
   }
 
 
   ngOnChanges(changes: SimpleChanges): void {
     var tmp = changes['selectDate'];
     if(tmp!=null && this.task!=null){
-      this.task.startDate = tmp.currentValue;;
+      this.task.startDate = tmp.currentValue;
     }
 
   }
