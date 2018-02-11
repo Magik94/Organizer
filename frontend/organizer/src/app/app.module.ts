@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {UserServiceService} from "./login/user-service.service";
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
+import {CookieService} from "angular2-cookie/core";
 
 
 
@@ -22,7 +23,7 @@ import {FormsModule} from "@angular/forms";
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [UserServiceService],
+  providers: [UserServiceService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -32,7 +32,8 @@
     "@ng-bootstrap/ng-bootstrap": "1.0.0-beta.9",
     "primeng": "^4.1.0",
     "font-awesome": "^4.7.0",
-    "ap-angular2-fullcalendar": "1.0.19"
+    "ap-angular2-fullcalendar": "1.0.19",
+    "angular2-cookie":"1.2.6"
   },
   "devDependencies": {
     "@angular/cli": "1.6.1",
