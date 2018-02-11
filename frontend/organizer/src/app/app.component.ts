@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {UserServiceService} from "./login/user-service.service";
 import {Router} from "@angular/router";
+import {CookieService} from "angular2-cookie/core";
 
 
 @Component({
@@ -13,11 +13,11 @@ export class AppComponent {
   title = 'app';
 
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private cookieService:CookieService) {
   }
 
   logout() {
-    UserServiceService.session="";
+    this.cookieService.removeAll();
     this.router.navigate(['login'])
   }
 }
