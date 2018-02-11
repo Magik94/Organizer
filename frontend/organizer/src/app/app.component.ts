@@ -1,4 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {UserServiceService} from "./login/user-service.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -9,4 +11,13 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+
+  constructor(private router:Router) {
+  }
+
+  logout() {
+    UserServiceService.session="";
+    this.router.navigate(['login'])
+  }
 }

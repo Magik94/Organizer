@@ -1,0 +1,16 @@
+
+
+
+
+<form>
+
+<input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username">
+
+<input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
+
+
+
+
+</form>
+
+<button (click)="send(user)">Zaloguj</button>

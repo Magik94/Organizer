@@ -5,19 +5,24 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {RoutingModule} from "./routing/routing.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {UserServiceService} from "./login/user-service.service";
+import { LoginComponent } from './login/login.component';
+import {FormsModule} from "@angular/forms";
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     RoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

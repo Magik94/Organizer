@@ -2,17 +2,14 @@ import {Injectable} from '@angular/core';
 import {Task} from "./task";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
+import {UserServiceService} from "../login/user-service.service";
 
-const httpOptions = {
-  headers: new HttpHeaders().append("Authorization", "Basic dXNlcjE6dXNlcjFQYXNz")
-
-};
 
 @Injectable()
 export class TaskService {
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserServiceService) {
   }
 
   add(task: Task) {
@@ -32,7 +29,8 @@ export class TaskService {
       workedTime: task.workedTime,
       planningTime: task.planningTime
 
-    }, httpOptions).subscribe(
+    },
+   this.userService.getSession()).subscribe(
       res => {
         alert("Operacja zakończoa sukcesem")
 
@@ -44,10 +42,10 @@ export class TaskService {
     );
   }
   remove(id:string){
-    this.http.delete('http://localhost:8080/api/task?id='+id, httpOptions).subscribe();
+    this.http.delete('http://localhost:8080/api/task?id='+id, this.userService.getSession()).subscribe();
   }
   getTasks():Observable<Task[]> {
-    return this.http.get<Task[]>("http://localhost:8080/api/task",httpOptions);
+    return this.http.get<Task[]>("http://localhost:8080/api/task",this.userService.getSession());
 
   }
 }

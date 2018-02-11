@@ -13,13 +13,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {TaskDetailsComponent} from "../task/details/task-details/task-details.component";
 import {BoardComponent} from "../board/board.component";
 import {BoardItemComponent} from "../board/board-item/board-item.component";
+import {LoginComponent} from "../login/login.component";
 
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'task/add', component: TaskAddComponent},
   {path: 'calendar', component: CalendarComponent,},
-  {path: 'board', component: BoardComponent}
+  {path: 'board', component: BoardComponent},
+  {path: 'login', component: LoginComponent}
 
 ];
 
