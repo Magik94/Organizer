@@ -39,7 +39,7 @@
       <div class="form-group">
         <label for="startDate">Data początkowa:</label>
         <input type="date" class="form-control" id="startDate" [ngModel]="task.startDate   | date:'y-MM-dd'"
-               (ngModelChange)="task.startDate  = $event" [value]="datee | date:'yyyy-MM-dd'" name="startDate"
+               (ngModelChange)="task.startDate  = $event"  name="startDate"
                required>
       </div>
 

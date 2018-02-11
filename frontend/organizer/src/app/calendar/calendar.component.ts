@@ -5,6 +5,7 @@ import {log} from "util";
 import {CalendarService, Get} from "./calendar.service";
 import {Task} from "../task/task";
 import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -26,7 +27,7 @@ export class CalendarComponent implements OnInit {
   calendarService: CalendarService;
   taskInDay:Get;
 
-  constructor(calendarService: CalendarService) {
+  constructor(calendarService: CalendarService,private router: Router) {
     this.calendarService = calendarService;
   }
 
@@ -60,8 +61,8 @@ export class CalendarComponent implements OnInit {
                 if(day.currentDay){
                   this.taskInDay = day.tasks;
                 }
-            }
-          );
+            },
+            error2 => this.router.navigate(['login']));
         }
 
       })

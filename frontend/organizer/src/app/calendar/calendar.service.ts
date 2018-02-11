@@ -1,22 +1,19 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-
-const httpOptions = {
-  headers: new HttpHeaders().append("Authorization", "Basic dXNlcjE6dXNlcjFQYXNz")
+import {UserServiceService} from "../login/user-service.service";
 
 
-};
 
 @Injectable()
 export class CalendarService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private userService:UserServiceService) {
 
   }
 
   getTaskForDate(date: Date):Observable<Get> {
     return this.http.get<Get>('http://localhost:8080/api/taskq/search/findByDateStartString?dateStart='
-      +this.dateConvert(date), httpOptions);
+      +this.dateConvert(date), this.userService.getSession());
     // return result;
   }
 
