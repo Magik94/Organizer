@@ -38,19 +38,19 @@
 
       <div class="form-group">
         <label for="startDate">Data początkowa:</label>
-        <input type="text" class="form-control" id="startDate" [ngModel]="task.startDate   | date:'y-MM-dd'"
-               name="startDate"
+        <input type="date" class="form-control" id="startDate" [ngModel]="task.startDate   | date:'y-MM-dd'"
+               (ngModelChange)="task.startDate  = $event" [value]="datee | date:'yyyy-MM-dd'" name="startDate"
                required>
       </div>
 
       <div class="form-group">
         <label for="planningTime">Planowany czas na zadanie:</label>
-        <input type="text" class="form-control" id="planningTime" [(ngModel)]="task.planningTime"   name="planningTime" required>
+        <input type="number" class="form-control" id="planningTime" [(ngModel)]="task.planningTime"   name="planningTime" required>
       </div>
 
       <div class="form-group">
         <label for="workedTime">Czas który spedzono:</label>
-        <input type="text" class="form-control" id="workedTime" [(ngModel)]="task.workedTime"   name="workedTime" required>
+        <input type="number" class="form-control" id="workedTime" [(ngModel)]="task.workedTime"   name="workedTime" required>
       </div>
 
       <button type="submit" class="btn btn-warning col-xs-12" (click)="send()">Dodaj zadanie!

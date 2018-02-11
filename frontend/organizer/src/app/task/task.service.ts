@@ -16,7 +16,12 @@ export class TaskService {
   }
 
   add(task: Task) {
-    var day = task.startDate.setHours(task.startDate.getHours() + 2);
+    var day
+    if(task.startDate != null) {
+
+        day = new Date(task.startDate).setHours(new Date(task.startDate).getHours()+2);
+
+    }
     this.http.post('http://localhost:8080/api/task', {
       id: task.id,
       title: task.title,
@@ -29,9 +34,7 @@ export class TaskService {
 
     }, httpOptions).subscribe(
       res => {
-        location.reload();
-        alert("Zadanie dodano!!!")
-        console.log(res);
+        alert("Operacja zakończoa sukcesem")
 
       },
       err => {
@@ -42,6 +45,10 @@ export class TaskService {
   }
   remove(id:string){
     this.http.delete('http://localhost:8080/api/task?id='+id, httpOptions).subscribe();
+  }
+  getTasks():Observable<Task[]> {
+    return this.http.get<Task[]>("http://localhost:8080/api/task",httpOptions);
+
   }
 }
 

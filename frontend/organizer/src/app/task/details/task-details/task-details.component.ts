@@ -44,7 +44,7 @@ export class TaskDetailsComponent implements OnInit, OnChanges {
   map(task: Item): Task {
     var tmp = new Task();
     tmp.id = task.id;
-    tmp.startDate = new Date(task.dateStart);
+    tmp.startDate = task.startDate;
     tmp.description = task.description;
     tmp.title = task.title;
     tmp.status = task.status;

@@ -6,8 +6,8 @@ export class Task {
   public startDate:Date;
   public endDate?:Date;
   public status:String;
-  public workedTime:String;
-  public planningTime:String;
+  public workedTime:Number;
+  public planningTime:Number;
 
 
 

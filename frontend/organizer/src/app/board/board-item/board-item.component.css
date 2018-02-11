@@ -15,5 +15,17 @@
   height: 175px;
   /*width:20vw;*/
   border-radius: 5px;
+
+}
+.call-in-progress{
   background-color: #a7f3bb;
+
+}
+.call-done{
+  background-color: #8af389;
+
+}
+.call-backlog{
+  background-color: #b4bbf3;
+
 }

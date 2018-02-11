@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Task} from "../../task/task";
 
 @Component({
   selector: 'app-board-item',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardItemComponent implements OnInit {
 
+  @Input()
+  task:Task;
+  @Output()
+  changedTask = new EventEmitter<Task>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  next(task:Task){
+    if (task.status == "Backlog") {
+      task.status="In progress";
+    }else
+    if (task.status == "In progress") {
+      task.status="Done";
+    }
+    this.changedTask.emit(this.task);
+  }
+  previous(task:Task){
+    if (task.status == "Done") {
+      task.status="In progress";
+    }else
+    if (task.status == "In progress") {
+      task.status="Backlog";
+    }
+    this.changedTask.emit(this.task);
+  }
 }

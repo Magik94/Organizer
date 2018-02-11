@@ -18,7 +18,7 @@ public class TaskDocument {
     private String title;
     private String status;
     private String description;
-    private LocalDate dateStart;
+    private LocalDate startDate;
     private LocalDate dateEnd;
     private Long workedTime;
     private Long planningTime;

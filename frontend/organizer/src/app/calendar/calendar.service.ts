@@ -14,8 +14,7 @@ export class CalendarService {
 
   }
 
-  checkTaskAvailable(date: Date):Observable<Get> {
-    var result: Get = new Get();
+  getTaskForDate(date: Date):Observable<Get> {
     return this.http.get<Get>('http://localhost:8080/api/taskq/search/findByDateStartString?dateStart='
       +this.dateConvert(date), httpOptions);
     // return result;
@@ -48,7 +47,7 @@ export class Get {
 export class Item{
   collectionValue?: boolean;
   title:string;
-  dateStart:string;
+  startDate:string;
   description:string;
   status:string;
   workedTime:number;

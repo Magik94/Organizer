@@ -1,26 +1,46 @@
+<div class="col-xs-12">
+  <div class="row">
+    <h1>
+      <div class="col-xs-4 text-center">
+        <div class="col-xs-11">
+          Backlog
+        </div>
+      </div>
+      <div class="col-xs-4 text-center rightContent">
+        <div class="col-xs-11">In progress</div>
+      </div>
+      <div class="col-xs-4 text-center rightContent">
+        <div class="col-xs-11">Done</div>
+      </div>
 
-<div class="col-xs-9">
-<div class="row">
-  <h1>
-    <div class="col-xs-4 text-center">Backlog</div>
-    <div class="col-xs-4 text-center rightContent">In progress</div>
-    <div class="col-xs-4 text-center rightContent">Done</div>
-
-  </h1>
-
-</div>
-<hr>
-<div class="row">
-  <div class="col-xs-4">
-    <app-board-item></app-board-item>
-  </div>
-  <div class="col-xs-4">
-    <app-board-item></app-board-item>
+    </h1>
 
   </div>
-  <div class="col-xs-4"></div>
-</div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="col-xs-11">
+        <div class="row" *ngFor="let task of tasksBacklog">
+          <app-board-item [task]="task" (changedTask)="changed($event)"></app-board-item>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="col-xs-11">
+        <div class="row" *ngFor="let task of tasksInProgress">
+          <app-board-item [task]="task" (changedTask)="changed($event)"></app-board-item>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="col-xs-11">
+        <div class="row" *ngFor="let task of tasksDone">
+          <app-board-item [task]="task" (changedTask)="changed($event)"></app-board-item>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!--<div class="col-xs-3">-->
-  <!--<app-task-add></app-task-add>-->
+<!--<app-task-add></app-task-add>-->
 <!--</div>-->

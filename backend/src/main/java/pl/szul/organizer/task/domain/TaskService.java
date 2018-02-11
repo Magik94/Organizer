@@ -14,7 +14,7 @@ class TaskService {
                 .id(pTaskDto.getId())
                 .description(pTaskDto.getDescription())
                 .status(pTaskDto.getStatus())
-                .dateStart(pTaskDto.getStartDate())
+                .startDate(pTaskDto.getStartDate())
                 .dateEnd(pTaskDto.getEndDate())
                 .title(pTaskDto.getTitle())
                 .workedTime(pTaskDto.getWorkedTime().orElse(0L))
