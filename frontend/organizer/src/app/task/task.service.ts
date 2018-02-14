@@ -32,7 +32,6 @@ export class TaskService {
     },
    this.userService.getSession()).subscribe(
       res => {
-        alert("Operacja zakończoa sukcesem")
 
       },
       err => {

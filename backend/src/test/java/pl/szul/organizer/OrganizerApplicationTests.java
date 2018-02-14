@@ -5,14 +5,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import rx.Observable;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
 public class OrganizerApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		Assert.assertTrue(true);
+        Observable.from(Arrays.asList("adam","jan","fff","jan"))
+                .take(2)
+                .subscribe(System.out::print);
 	}
 
 }
