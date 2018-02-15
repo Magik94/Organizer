@@ -10,7 +10,8 @@ import java.util.Set;
 @RepositoryRestResource(collectionResourceRel = "task", path = "taskq")
 public interface TaskQueryRepository extends MongoRepository<TaskDocument,String> {
 
-    Set<TaskDocument> findByDateStartString(@Param("dateStart")String pLocalDate);
+
+    Set<TaskDocument> findByDateStartStringAndUserId(@Param("dateStart")String pLocalDate,@Param("user") String user);
 
     List<TaskDocument> findByUserId(String pTestUser);
 }

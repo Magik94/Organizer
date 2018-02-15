@@ -2,6 +2,7 @@ package pl.szul.organizer.task.domain;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.szul.organizer.infrastructure.security.UserService;
 
 @Configuration
 class TaskConfiguration {
@@ -12,8 +13,8 @@ class TaskConfiguration {
     }
 
     @Bean
-    TaskService taskService(TaskRepository pTaskRepository) {
-        return new TaskService(pTaskRepository);
+    TaskService taskService(TaskRepository pTaskRepository, UserService pUserService) {
+        return new TaskService(pTaskRepository,pUserService);
     }
 
 }

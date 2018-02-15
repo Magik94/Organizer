@@ -1,16 +1,28 @@
 
+<div style="justify-content: center; align-items: center;display: flex;">
+  <h1 style="font-size: calc(10vw * (9/16))">Organizer
+    <small style="font-size: calc(3vw * (9/16))">Changes your life</small>
+  </h1>
+</div>
 
+<div class="center-block" style=" display: flex;
+    justify-content: center;
+    align-items: center;
+margin-top: 10vw;
 
+">
+  <div class="row">
+    <div class="row">
+      <form>
+        <input type="text" class="form-control" id="username" [(ngModel)]="user.username"
+               name="username">
 
-<form>
-
-<input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username">
-
-<input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
-
-
-
-
-</form>
-
-<button (click)="send(user)">Zaloguj</button>
+        <input type="password" class="form-control" id="password" [(ngModel)]="user.password"
+               name="password">
+      </form>
+    </div>
+    <div class="row">
+      <button class="btn btn-default col-xs-12" (click)="send(user)">Zaloguj</button>
+    </div>
+  </div>
+</div>

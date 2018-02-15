@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from "../task/task";
 import {TaskService} from "../task/task.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-board',
@@ -14,7 +15,7 @@ export class BoardComponent implements OnInit {
   tasksInProgress: Task[] = [];
   tasksDone: Task[] = [];
 
-  constructor(private taskService: TaskService) {
+  constructor(private taskService: TaskService, private router:Router) {
 
   }
   changed(t:Task) {
@@ -47,7 +48,8 @@ export class BoardComponent implements OnInit {
         }
       })
 
-    })
+    },
+      error => this.router.navigate(['login']))
   }
 
 }

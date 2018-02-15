@@ -14,13 +14,19 @@ export class UserServiceService {
     }
   }
 
+  getUser(){
+    return this.cookieService.get("UserName");
+
+  }
+
   setSession(user: LoggedUser) {
     this.http.post<Token>('http://localhost:8080/login',{
-      username: "admin",
-      password: "admin"
+      username: user.username,
+      password: user.password
     })
       .subscribe((res) => {
         this.cookieService.put("Authorization",res.token)
+        this.cookieService.put("UserName",user.username)
         this.router.navigate(['calendar'])
       })
 
@@ -29,8 +35,8 @@ export class UserServiceService {
 }
 
 export class LoggedUser{
-  username:String;
-  password:String;
+  username:string;
+  password:string;
 
   constructor() {
   }

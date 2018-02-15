@@ -12,9 +12,8 @@ export class CalendarService {
   }
 
   getTaskForDate(date: Date):Observable<Get> {
-    return this.http.get<Get>('http://localhost:8080/api/taskq/search/findByDateStartString?dateStart='
-      +this.dateConvert(date), this.userService.getSession());
-    // return result;
+    return this.http.get<Get>('http://localhost:8080/api/taskq/search/findByDateStartStringAndUserId?dateStart='
+      +this.dateConvert(date)+'&user='+this.userService.getUser(), this.userService.getSession());
   }
 
   private dateConvert(date: Date):string{
