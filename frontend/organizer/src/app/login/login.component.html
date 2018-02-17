@@ -1,28 +1,51 @@
-
 <div style="justify-content: center; align-items: center;display: flex;">
   <h1 style="font-size: calc(10vw * (9/16))">Organizer
     <small style="font-size: calc(3vw * (9/16))">Changes your life</small>
   </h1>
 </div>
 
-<div class="center-block" style=" display: flex;
-    justify-content: center;
-    align-items: center;
-margin-top: 10vw;
-
-">
+<div class="center-block"
+     style=" display: flex;justify-content: center;align-items: center;margin-top: 5vw;">
   <div class="row">
-    <div class="row">
-      <form>
-        <input type="text" class="form-control" id="username" [(ngModel)]="user.username"
-               name="username">
+    <p>{{message}}</p>
+    <div id="login" class="collapse" [ngClass]="isLogin?'show':'hide'">
+      <div class="row">
+        <h3>Logowanie</h3>
+        <form>
+          <input type="text" class="form-control" id="username" [(ngModel)]="user.username"
+                 name="username">
 
-        <input type="password" class="form-control" id="password" [(ngModel)]="user.password"
-               name="password">
-      </form>
+          <input type="password" class="form-control" id="password" [(ngModel)]="user.password"
+                 name="password">
+
+        </form>
+      </div>
+      <div class="row">
+        <button class="btn btn-default col-xs-12" (click)="send(user)">Zaloguj</button>
+      </div>
+      <p>
+        Nie masz konta?
+        <a (click)="login()" style="cursor: pointer">Zarejestruj sie!</a>
+      </p>
     </div>
-    <div class="row">
-      <button class="btn btn-default col-xs-12" (click)="send(user)">Zaloguj</button>
+
+    <div id="demo" class="collapse" [ngClass]="isLogin?'hide':'show'">
+      <div class="row">
+        <h3>Rejestracja</h3>
+        <form>
+          <input type="text" class="form-control" [(ngModel)]="user.username"
+                 name="username">
+          <input type="password" class="form-control" [(ngModel)]="user.password"
+                 name="password">
+        </form>
+      </div>
+      <div class="row">
+        <button class="btn btn-default col-xs-12" (click)="signup(user)">Zarejestruj się!</button>
+      </div>
+      <p>
+        &nbsp;	&nbsp;	 &nbsp;	&nbsp;Masz konto?
+        <a (click)="login()" style="cursor: pointer">Zaloguj sie!</a>&nbsp;	&nbsp;	  &nbsp;
+      </p>
     </div>
   </div>
 </div>
