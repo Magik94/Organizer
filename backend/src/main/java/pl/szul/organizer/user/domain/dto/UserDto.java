@@ -1,6 +1,7 @@
 package pl.szul.organizer.user.domain.dto;
 
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

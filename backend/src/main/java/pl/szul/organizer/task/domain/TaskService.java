@@ -1,9 +1,10 @@
 package pl.szul.organizer.task.domain;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import pl.szul.organizer.infrastructure.security.UserService;
 import pl.szul.organizer.task.domain.dto.TaskDto;
+
+import java.time.LocalDate;
+import java.util.Optional;
 
 class TaskService {
     private TaskRepository taskRepository;
@@ -11,7 +12,7 @@ class TaskService {
 
     TaskService(TaskRepository pTaskRepository, UserService pUserService) {
         taskRepository = pTaskRepository;
-        userService=pUserService;
+        userService = pUserService;
     }
 
     void addTask(TaskDto pTaskDto) {
@@ -27,6 +28,7 @@ class TaskService {
                 .planningTime(pTaskDto.getPlanningTime().orElse(0L))
                 .dateStartString(pTaskDto.getStartDate().toString())
                 .userId(name)
+                .createDate(Optional.ofNullable(pTaskDto.getId()).map(r -> taskRepository.findOne(r).getCreateDate()).orElse(LocalDate.now()))
                 .build());
     }
 

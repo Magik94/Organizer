@@ -16,6 +16,7 @@ import java.util.Optional;
 @Builder
 @AllArgsConstructor
 @Setter
+@Getter
 @Document(collection = "task")
 class TaskDocument {
 
@@ -30,6 +31,7 @@ class TaskDocument {
     private Long planningTime;
     private String userId;
     private String dateStartString;
+    private LocalDate createDate;
 
 
 
