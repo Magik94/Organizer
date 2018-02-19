@@ -19,7 +19,7 @@
 
 
 <div *ngFor="let task of taskInDay?.content" class="row">
-  <a (click)="openEdit(task)" [hidden]="task.collectionValue">
+  <a data-toggle="modal" [attr.data-target]="'#' + task?.id" style="cursor:pointer" [hidden]="task.collectionValue">
     <div class="col-xs-3">
       {{task?.status}}
     </div>
@@ -37,11 +37,29 @@
       <span class="glyphicon glyphicon-remove" (click)="remove(task?.id)"></span>
     </div>
 
+  <!-- Modal -->
+  <div [attr.id]="task?.id" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edytuj zadanie</h4>
+        </div>
+        <div class="modal-body">
+          <app-task-add [task]="task"></app-task-add>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
 
 </div>
 
-<div class="collapse" [class.show]="showEdit">
 
-  <app-task-add [task]="task"></app-task-add>
-
-</div>

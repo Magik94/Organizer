@@ -1,15 +1,22 @@
 package pl.szul.organizer.task.domain;
 
+import pl.szul.organizer.infrastructure.security.UserService;
 import pl.szul.organizer.task.domain.dto.TaskDto;
+
+import java.time.LocalDate;
+import java.util.Optional;
 
 class TaskService {
     private TaskRepository taskRepository;
+    private UserService userService;
 
-    TaskService(TaskRepository pTaskRepository) {
+    TaskService(TaskRepository pTaskRepository, UserService pUserService) {
         taskRepository = pTaskRepository;
+        userService = pUserService;
     }
 
     void addTask(TaskDto pTaskDto) {
+        String name = userService.getName();
         taskRepository.save(TaskDocument.builder()
                 .id(pTaskDto.getId())
                 .description(pTaskDto.getDescription())
@@ -20,7 +27,8 @@ class TaskService {
                 .workedTime(pTaskDto.getWorkedTime().orElse(0L))
                 .planningTime(pTaskDto.getPlanningTime().orElse(0L))
                 .dateStartString(pTaskDto.getStartDate().toString())
-                .userId("TestUser") //todo jak bedzie logowanie brac prawdziwe user id
+                .userId(name)
+                .createDate(Optional.ofNullable(pTaskDto.getId()).map(r -> taskRepository.findOne(r).getCreateDate()).orElse(LocalDate.now()))
                 .build());
     }
 

@@ -12,7 +12,7 @@
     <!-- /.row -->
 
     <form>
-      <div class="form-group">
+      <div class="form-group" id="usrform">
         <label for="title">Tytuł:</label>
         <input type="text" class="form-control" id="title" [(ngModel)]="task.title" name="title"
                required>
@@ -20,16 +20,16 @@
 
       <div class="form-group">
         <label for="description">Opis:</label>
-        <input type="text" class="form-control" id="description" [(ngModel)]="task.description"
+        <textarea  type="text" form="usrform" class="form-control" id="description" [(ngModel)]="task.description"
                name="description"
-               required>
+                   required></textarea>
       </div>
 
 
       <div class="form-group">
       <label for="status">Status:</label>
       <select class="form-control" id="status" name="status" [(ngModel)]="task.status">
-      <option>Backlog</option>
+      <option >Backlog</option>
       <option>In progress</option>
       <option>Done</option>
       </select>
@@ -53,7 +53,7 @@
         <input type="number" class="form-control" id="workedTime" [(ngModel)]="task.workedTime"   name="workedTime" required>
       </div>
 
-      <button type="submit" class="btn btn-warning col-xs-12" (click)="send()">Dodaj zadanie!
+      <button type="submit" class="btn btn-warning col-xs-12"  data-dismiss="modal" (click)="send()">Dodaj zadanie!
       </button>
 
     </form>

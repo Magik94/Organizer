@@ -1,14 +1,17 @@
 package pl.szul.organizer.infrastructure.security;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.apache.commons.io.IOUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import pl.szul.organizer.user.domain.UserDocument;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -25,6 +28,7 @@ import static pl.szul.organizer.infrastructure.security.SecurityConstants.TOKEN_
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -34,16 +38,20 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
 
-//            ApplicationUser creds = new ObjectMapper()
-//                    .readValue(req.getInputStream(), ApplicationUser.class);
+        try {
+            String requestBody = IOUtils.toString(req.getReader());
+            UserDocument authRequest = objectMapper.readValue(requestBody, UserDocument.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            "admin",
-                            "admin",
+                            authRequest.getUsername(),
+                            authRequest.getPassword(),
                             new ArrayList<>())
             );
-
+        } catch (IOException pE) {
+            pE.printStackTrace();
+        }
+        throw new IllegalStateException();
     }
 
     @Override
@@ -60,7 +68,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .compact();
         res.setContentType("application/json;charset=UTF-8");
         res.getWriter().write("{" +
-                "\"token\" :" + "\""+TOKEN_PREFIX + token +"\""+
+                "\"token\" :" + "\"" + TOKEN_PREFIX + token + "\"" +
                 "}");
         res.getWriter().flush();
         res.getWriter().close();

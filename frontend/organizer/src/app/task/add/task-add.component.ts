@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TaskService} from "../task.service";
 import {Task} from "../task";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class TaskAddComponent implements OnInit, OnChanges {
   taskService: TaskService;
 
 
-  constructor(taskSevice: TaskService) {
+  constructor(taskSevice: TaskService,private router: Router) {
     this.taskService = taskSevice;
   }
 
@@ -41,10 +42,12 @@ export class TaskAddComponent implements OnInit, OnChanges {
 
   send() {
     this.taskService.add(this.task);
-
+    this.onRefresh();
   }
 
-
+  onRefresh() {
+    this.router.navigated = false;
+  }
 
 
 

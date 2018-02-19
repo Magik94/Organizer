@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'task/add', component: TaskAddComponent},
   {path: 'calendar', component: CalendarComponent,},
+  {path: 'calendar2', component: CalendarComponent,},
   {path: 'board', component: BoardComponent},
   {path: 'login', component: LoginComponent}
 
@@ -30,7 +31,7 @@ const routes: Routes = [
 
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'}),
     FormsModule,
     NgbModule,
     NgbModalModule.forRoot(),

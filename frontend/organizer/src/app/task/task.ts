@@ -5,9 +5,9 @@ export class Task {
   public description:String;
   public startDate:Date;
   public endDate?:Date;
-  public status:String;
-  public workedTime:Number;
-  public planningTime:Number;
+  public status:String = "Backlog";
+  public workedTime:Number =0;
+  public planningTime:Number = 0;
 
 
 

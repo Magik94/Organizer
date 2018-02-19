@@ -15,9 +15,7 @@ export class TaskService {
   add(task: Task) {
     var day
     if(task.startDate != null) {
-
         day = new Date(task.startDate).setHours(new Date(task.startDate).getHours()+2);
-
     }
     this.http.post('http://localhost:8080/api/task', {
       id: task.id,
@@ -32,7 +30,6 @@ export class TaskService {
     },
    this.userService.getSession()).subscribe(
       res => {
-        alert("Operacja zakończoa sukcesem")
 
       },
       err => {
