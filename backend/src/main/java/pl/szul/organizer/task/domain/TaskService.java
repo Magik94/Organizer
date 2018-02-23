@@ -5,10 +5,16 @@ import pl.szul.organizer.task.domain.dto.TaskDto;
 
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
+
+import pl.szul.organizer.mail.domain.EmailFacade;
 
 class TaskService {
     private TaskRepository taskRepository;
     private UserService userService;
+    private EmailFacade emailFacade;
+
 
     TaskService(TaskRepository pTaskRepository, UserService pUserService) {
         taskRepository = pTaskRepository;
@@ -34,5 +40,6 @@ class TaskService {
 
     void delete(String id) {
         taskRepository.delete(id);
+        emailFacade.send();
     }
 }
