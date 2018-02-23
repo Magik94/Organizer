@@ -16,9 +16,10 @@ class TaskService {
     private EmailFacade emailFacade;
 
 
-    TaskService(TaskRepository pTaskRepository, UserService pUserService) {
+    TaskService(TaskRepository pTaskRepository, UserService pUserService, EmailFacade pEmailFacade) {
         taskRepository = pTaskRepository;
         userService = pUserService;
+        emailFacade = pEmailFacade;
     }
 
     void addTask(TaskDto pTaskDto) {
