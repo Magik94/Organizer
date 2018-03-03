@@ -9,10 +9,6 @@ import pl.szul.organizer.mail.EmailSender;
 class EmailConfiguration {
 
 
-    @Bean
-    EmailService emailService() {
-        return new EmailServiceImpl();
-    }
 
     @Bean
     EmailSender emailFacade(EmailService pEmailService) {

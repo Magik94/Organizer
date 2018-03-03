@@ -1,6 +1,8 @@
 package pl.szul.organizer.mail;
 
+import java.util.Set;
+
 public interface EmailSender {
 
-    void send(String pEmail,String pTitle, String pMessage);
+    void send();
 }

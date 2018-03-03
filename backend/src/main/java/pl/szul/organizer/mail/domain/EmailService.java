@@ -1,6 +1,8 @@
 package pl.szul.organizer.mail.domain;
 
-interface EmailService {
+import java.util.Set;
 
-    void send(String pEmail,String pTitle, String pMessage);
+public interface EmailService {
+
+    void send(Set<String> pEmail, String pTitle, String pMessage);
 }
