@@ -16,6 +16,7 @@ import pl.szul.organizer.user.domain.UserRepository;
 import pl.szul.organizer.user.domain.dto.UserDto;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/user")
@@ -35,6 +36,11 @@ class UserController {
         return user.map(r -> getFailedRegister(pUserDto))
                 .orElseGet(() -> getSuccessfulRegister(pUserDto));
 
+    }
+
+    @GetMapping
+    ResponseEntity getAllUsers(){
+        return ResponseEntity.ok().body(userRepository.findAll().stream().map(UserDocument::getUsername).collect(Collectors.toList()));
     }
 
     private ResponseEntity<Response> getFailedRegister(@RequestBody UserDto pUserDto) {

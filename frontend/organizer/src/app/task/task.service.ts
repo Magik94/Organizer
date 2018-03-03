@@ -25,7 +25,8 @@ export class TaskService {
       status: task.status,
       endDate: task.endDate,
       workedTime: task.workedTime,
-      planningTime: task.planningTime
+      planningTime: task.planningTime,
+      username: task.username
 
     },
    this.userService.getSession()).subscribe(

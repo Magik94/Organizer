@@ -20,40 +20,55 @@
 
       <div class="form-group">
         <label for="description">Opis:</label>
-        <textarea  type="text" form="usrform" class="form-control" id="description" [(ngModel)]="task.description"
-               name="description"
-                   required></textarea>
+        <textarea type="text" form="usrform" class="form-control" id="description"
+                  [(ngModel)]="task.description"
+                  name="description"
+                  required></textarea>
       </div>
 
 
       <div class="form-group">
-      <label for="status">Status:</label>
-      <select class="form-control" id="status" name="status" [(ngModel)]="task.status">
-      <option >Backlog</option>
-      <option>In progress</option>
-      <option>Done</option>
-      </select>
+        <label for="status">Status:</label>
+        <select class="form-control" id="status" name="status" [(ngModel)]="task.status">
+          <option>Backlog</option>
+          <option>In progress</option>
+          <option>Done</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="user">Użytkownik:</label>
+        <select class="form-control" id="user" name="user" [(ngModel)]="task.username">
+          <option selected>{{currentUser}}</option>
+          <option *ngFor="let user of users">
+            {{user}}
+          </option>
+        </select>
       </div>
 
 
       <div class="form-group">
         <label for="startDate">Data początkowa:</label>
-        <input type="date" class="form-control" id="startDate" [ngModel]="task.startDate   | date:'y-MM-dd'"
-               (ngModelChange)="task.startDate  = $event"  name="startDate"
+        <input type="date" class="form-control" id="startDate"
+               [ngModel]="task.startDate   | date:'y-MM-dd'"
+               (ngModelChange)="task.startDate  = $event" name="startDate"
                required>
       </div>
 
       <div class="form-group">
         <label for="planningTime">Planowany czas na zadanie:</label>
-        <input type="number" class="form-control" id="planningTime" [(ngModel)]="task.planningTime"   name="planningTime" required>
+        <input type="number" class="form-control" id="planningTime" [(ngModel)]="task.planningTime"
+               name="planningTime" required>
       </div>
 
       <div class="form-group">
         <label for="workedTime">Czas który spedzono:</label>
-        <input type="number" class="form-control" id="workedTime" [(ngModel)]="task.workedTime"   name="workedTime" required>
+        <input type="number" class="form-control" id="workedTime" [(ngModel)]="task.workedTime"
+               name="workedTime" required>
       </div>
 
-      <button type="submit" class="btn btn-warning col-xs-12"  data-dismiss="modal" (click)="send()">Dodaj zadanie!
+      <button type="submit" class="btn btn-warning col-xs-12" data-dismiss="modal" (click)="send()">
+        Dodaj zadanie!
       </button>
 
     </form>

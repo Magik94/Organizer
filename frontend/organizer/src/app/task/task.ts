@@ -8,6 +8,7 @@ export class Task {
   public status:String = "Backlog";
   public workedTime:Number =0;
   public planningTime:Number = 0;
+  public username:String;
 
 
 

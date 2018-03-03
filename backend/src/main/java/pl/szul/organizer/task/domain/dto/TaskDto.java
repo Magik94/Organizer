@@ -15,6 +15,7 @@ public class TaskDto {
     private String description;
     private LocalDate startDate;
     private LocalDate endDate;
+    private String user;
     private Optional<Long> workedTime = Optional.empty();
     private Optional<Long> planningTime = Optional.empty();
 

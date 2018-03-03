@@ -38,7 +38,7 @@ class TaskService {
                 .workedTime(pTaskDto.getWorkedTime().orElse(0L))
                 .planningTime(pTaskDto.getPlanningTime().orElse(0L))
                 .dateStartString(pTaskDto.getStartDate().toString())
-                .userId(name)
+                .userId(Optional.ofNullable(pTaskDto.getUser()).orElse(name))
                 .createDate(Optional.ofNullable(pTaskDto.getId()).map(r -> taskRepository.findOne(r).getCreateDate()).orElse(LocalDate.now()))
                 .build());
         if (pTaskDto.getId() == null) {
