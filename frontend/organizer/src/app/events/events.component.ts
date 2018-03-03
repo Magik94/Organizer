@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Event, EventService} from "./events.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'events',
@@ -10,12 +11,21 @@ import {Event, EventService} from "./events.service";
 export class EventsComponent implements OnInit {
 
   events:Event[];
-  constructor(private eventService:EventService) { }
+  constructor(private eventService:EventService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.eventService.getEvents().subscribe(res =>{
-      this.events= res.content;
-    });
+      this.route.params.subscribe(params => {
+        let count  = params['count'];
+        if(count==null){
+          count=10;
+        }
+        this.eventService.getEvents(count).subscribe(res =>{
+          this.events= res.content;
+        });
+
+      });
+
+
 
   }
 

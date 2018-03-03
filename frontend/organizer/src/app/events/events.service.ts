@@ -10,8 +10,8 @@ export class EventService {
   }
 
 
-  getEvents():Observable<Content> {
-    return this.httpClient.get<Content>("http://localhost:8080/api/event",this.userSevice.getSession())
+  getEvents(count:number):Observable<Content> {
+    return this.httpClient.get<Content>("http://localhost:8080/api/event/"+count,this.userSevice.getSession())
   }
 
 

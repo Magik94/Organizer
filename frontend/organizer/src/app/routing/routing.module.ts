@@ -25,7 +25,8 @@ const routes: Routes = [
   {path: 'calendar2', component: CalendarComponent,},
   {path: 'board', component: BoardComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'report', component: ReportComponent}
+  {path: 'report', component: ReportComponent},
+  {path: 'event/:count', component: EventsComponent}
 
 ];
 
