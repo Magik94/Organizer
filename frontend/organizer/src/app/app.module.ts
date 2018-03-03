@@ -9,6 +9,7 @@ import {UserServiceService} from "./login/user-service.service";
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import {CookieService} from "angular2-cookie/core";
+import { ReportComponent } from './report/report.component';
 
 
 

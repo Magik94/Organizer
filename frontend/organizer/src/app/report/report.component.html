@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Tytuł</th>
+    <th scope="col">Czas spędzony</th>
+    <th scope="col">Czas zaplanowany</th>
+    <th scope="col">Do końca</th>
+    <th scope="col">Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of tasks" [class]="(item.planningTime - item.workedTime)<=0?'delay':''">
+    <td>{{item.title}}</td>
+    <td>{{item.workedTime}}</td>
+    <td>{{item.planningTime}}</td>
+    <td>{{item.planningTime - item.workedTime}}</td>
+    <td>{{item.status}}</td>
+  </tr>
+
+  </tbody>
+</table>
+
+

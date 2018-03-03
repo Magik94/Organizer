@@ -14,6 +14,7 @@ import {TaskDetailsComponent} from "../task/details/task-details/task-details.co
 import {BoardComponent} from "../board/board.component";
 import {BoardItemComponent} from "../board/board-item/board-item.component";
 import {LoginComponent} from "../login/login.component";
+import {ReportComponent} from "../report/report.component";
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'calendar', component: CalendarComponent,},
   {path: 'calendar2', component: CalendarComponent,},
   {path: 'board', component: BoardComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'report', component: ReportComponent}
 
 ];
 
@@ -49,7 +51,8 @@ const routes: Routes = [
     IterablePipe,
     EventComponent,
     BoardComponent,
-    BoardItemComponent
+    BoardItemComponent,
+    ReportComponent
 
 
   ]
