@@ -17,8 +17,7 @@ export class TaskAddComponent implements OnInit, OnChanges {
   @Input() task: Task;
   @Input() selectDate: Date;
   taskService: TaskService;
-  users:string[];
-  currentUser:string;
+  users:string[] = [];
 
 
   constructor(taskSevice: TaskService,private router: Router, private userService: UserServiceService) {
@@ -26,7 +25,6 @@ export class TaskAddComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.currentUser = this.userService.getUser();
     if(this.task==null) {
       this.task = new Task();
     }
@@ -34,7 +32,8 @@ export class TaskAddComponent implements OnInit, OnChanges {
       this.task.startDate = this.selectDate;
     }
     this.userService.getAll().subscribe(res =>{
-      this.users = res;
+      this.users.push(this.userService.getUser());
+      res.forEach(i=> this.users.push(i));
     })
   }
 

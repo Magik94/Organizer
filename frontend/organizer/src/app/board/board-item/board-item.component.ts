@@ -13,9 +13,16 @@ export class BoardItemComponent implements OnInit {
   @Output()
   changedTask = new EventEmitter<Task>();
 
+  @Output()
+  removeTask = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  remove(id:string){
+    this.removeTask.emit(id);
   }
 
   next(task:Task){

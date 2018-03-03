@@ -38,9 +38,8 @@
 
       <div class="form-group">
         <label for="user">Użytkownik:</label>
-        <select class="form-control" id="user" name="user" [(ngModel)]="task.username">
-          <option selected>{{currentUser}}</option>
-          <option *ngFor="let user of users">
+        <select class="form-control" id="user" name="user" [(ngModel)]="task.userId">
+          <option *ngFor="let user of users" [ngValue]="user">
             {{user}}
           </option>
         </select>

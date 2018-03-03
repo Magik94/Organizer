@@ -15,13 +15,22 @@ export class BoardComponent implements OnInit {
   tasksInProgress: Task[] = [];
   tasksDone: Task[] = [];
 
-  constructor(private taskService: TaskService, private router:Router) {
+  constructor(private taskService: TaskService, private router: Router) {
 
   }
-  changed(t:Task) {
+
+  remove(id: string) {
+    this.tasksBacklog = this.tasksBacklog.filter(item => item.id !== id);
+    this.tasksInProgress = this.tasksInProgress.filter(item => item.id !== id);
+    this.tasksDone = this.tasksDone.filter(item => item.id !== id);
+
+    this.taskService.remove(id);
+  }
+
+  changed(t: Task) {
     this.tasksBacklog = this.tasksBacklog.filter(item => item.id !== t.id);
-    this.tasksInProgress =this.tasksInProgress.filter(item => item.id !== t.id);
-    this.tasksDone =this.tasksDone.filter(item => item.id !== t.id);
+    this.tasksInProgress = this.tasksInProgress.filter(item => item.id !== t.id);
+    this.tasksDone = this.tasksDone.filter(item => item.id !== t.id);
     if (t.status == "Backlog") {
       this.tasksBacklog.push(t);
     }
@@ -36,19 +45,19 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.taskService.getTasks().subscribe(r => {
-      r.forEach(t => {
-        if (t.status == "Backlog") {
-          this.tasksBacklog.push(t);
-        }
-        if (t.status == "In progress") {
-          this.tasksInProgress.push(t);
-        }
-        if (t.status == "Done") {
-          this.tasksDone.push(t);
-        }
-      })
+        r.forEach(t => {
+          if (t.status == "Backlog") {
+            this.tasksBacklog.push(t);
+          }
+          if (t.status == "In progress") {
+            this.tasksInProgress.push(t);
+          }
+          if (t.status == "Done") {
+            this.tasksDone.push(t);
+          }
+        })
 
-    },
+      },
       error => this.router.navigate(['login']))
   }
 
