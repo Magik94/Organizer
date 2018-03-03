@@ -15,6 +15,7 @@ import {BoardComponent} from "../board/board.component";
 import {BoardItemComponent} from "../board/board-item/board-item.component";
 import {LoginComponent} from "../login/login.component";
 import {ReportComponent} from "../report/report.component";
+import {EventsComponent} from "../events/events.component";
 
 
 const routes: Routes = [
@@ -52,9 +53,8 @@ const routes: Routes = [
     EventComponent,
     BoardComponent,
     BoardItemComponent,
-    ReportComponent
-
-
+    ReportComponent,
+    EventsComponent
   ]
 
 })
