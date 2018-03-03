@@ -4,5 +4,5 @@ import java.util.Set;
 
 public interface EmailSender {
 
-    void send();
+    void send(String title, String body);
 }
