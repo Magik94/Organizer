@@ -13,11 +13,22 @@ public class TaskDto {
     private String title;
     private String status;
     private String description;
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate startDate;
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate endDate;
+    private String user;
     private Optional<Long> workedTime = Optional.empty();
     private Optional<Long> planningTime = Optional.empty();
 
+    @Override
+    public String toString() {
+        return
+                "id='" + id + '\'' +
+                ",\n <b>title='" + title  +"</b>"+'\'' +
+                ",\n status='" + status + '\'' +
+                ",\n description='" + description + '\'' +
+                ",\n startDate=" + startDate +
+                ",\n endDate=" + endDate +
+                ",\n workedTime=" + workedTime.orElse(0L) +
+                ",\n planningTime=" + planningTime.orElse(0L);
+    }
 }

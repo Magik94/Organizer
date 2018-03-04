@@ -43,6 +43,15 @@ export class UserServiceService {
     })
   }
 
+
+  getAll(): Observable<string[]> {
+    return this.http.get<string[]>('http://localhost:8080/api/user',{
+      headers: new HttpHeaders().append("Content-Type", "application/json").append("Accept", "application/json")
+    })
+  }
+
+
+
 }
 
 export class LoggedUser {

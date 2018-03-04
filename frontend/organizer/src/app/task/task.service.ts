@@ -14,21 +14,22 @@ export class TaskService {
 
   add(task: Task) {
     var day
-    if(task.startDate != null) {
-        day = new Date(task.startDate).setHours(new Date(task.startDate).getHours()+2);
+    if (task.startDate != null) {
+      day = new Date(task.startDate).setHours(new Date(task.startDate).getHours() + 2);
     }
     this.http.post('http://localhost:8080/api/task', {
-      id: task.id,
-      title: task.title,
-      startDate: new Date(day),
-      description: task.description,
-      status: task.status,
-      endDate: task.endDate,
-      workedTime: task.workedTime,
-      planningTime: task.planningTime
+        id: task.id,
+        title: task.title,
+        startDate: new Date(day),
+        description: task.description,
+        status: task.status,
+        endDate: task.endDate,
+        workedTime: task.workedTime,
+        planningTime: task.planningTime,
+        user: task.userId
 
-    },
-   this.userService.getSession()).subscribe(
+      },
+      this.userService.getSession()).subscribe(
       res => {
 
       },
@@ -38,11 +39,18 @@ export class TaskService {
       }
     );
   }
-  remove(id:string){
-    this.http.delete('http://localhost:8080/api/task?id='+id, this.userService.getSession()).subscribe();
+
+  remove(id: string) {
+    this.http.delete('http://localhost:8080/api/task?id=' + id, this.userService.getSession()).subscribe();
   }
-  getTasks():Observable<Task[]> {
-    return this.http.get<Task[]>("http://localhost:8080/api/task",this.userService.getSession());
+
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>("http://localhost:8080/api/task", this.userService.getSession());
+
+  }
+
+  getTasksAll(): Observable<Task[]> {
+    return this.http.get<Task[]>("http://localhost:8080/api/task/all", this.userService.getSession());
 
   }
 }

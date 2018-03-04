@@ -1,0 +1,6 @@
+
+    <a href="#" class="list-group-item" *ngFor="let event of events">
+      <span class="badge">{{event.date | date: 'dd/MM/yyyy'}}</span>
+      <i class="fa fa-fw fa-calendar"></i>  <b>{{event.username}}</b> - {{event.body}}
+    </a>
+

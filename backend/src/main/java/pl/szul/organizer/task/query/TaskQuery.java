@@ -22,7 +22,12 @@ class TaskQuery {
 
 
     @GetMapping
-    public ResponseEntity getAllUserTasks() {
+    public ResponseEntity getUserTask() {
         return ResponseEntity.ok().body(taskQueryRepository.findByUserId(userService.getName()));
+    }
+
+    @GetMapping(path = "all")
+    public ResponseEntity getAllTask() {
+        return ResponseEntity.ok().body(taskQueryRepository.findAll());
     }
 }

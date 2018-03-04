@@ -4,12 +4,12 @@ package pl.szul.organizer.mail.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.Set;
 
-
+@Component
 class EmailServiceImpl implements EmailService {
 
     @Autowired
@@ -25,7 +25,7 @@ class EmailServiceImpl implements EmailService {
             helper.setTo(pEmail.toArray(new String[pEmail.size()]));
             helper.setText(pMessage, true);
             javaMailSender.send(message);
-        } catch (MessagingException e) {
+        } catch (javax.mail.MessagingException e) {
             e.printStackTrace();
         }
 

@@ -5,6 +5,7 @@
       <a data-toggle="modal" [attr.data-target]="'#' + task.id" style="cursor:pointer">
         <h4><b>{{task.title}}</b></h4>
       </a>
+
     </div>
   </div>
   <div class="row">
@@ -23,11 +24,14 @@
     </div>
   </div>
   <div class="row footer-div">
-    <div class="col-xs-6 text-right">
+    <div class="col-xs-5 text-right">
       Data: <i>{{task.startDate | date: 'dd/MM/yyyy'}}</i>
     </div>
-    <div class="col-xs-6 text-right">
+    <div class="col-xs-5 text-right">
       <p class="">{{task.workedTime}}/{{task.planningTime}}</p>
+    </div>
+    <div class="col-xs-2 text-right">
+      <a class="glyphicon glyphicon-remove" (click)="remove(task.id)"></a>
     </div>
   </div>
 

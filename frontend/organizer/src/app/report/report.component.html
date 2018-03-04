@@ -1,0 +1,52 @@
+<h1>Raport</h1>
+<div class="row">
+  <div class="col-xs-3">
+    <div class="form-check">
+      <input type="checkbox" [checked]="!allTask" (change)="change()"/>
+      <label class="form-check-label">Moje zadania</label>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="form-check">
+      <input type="checkbox" [checked]="checkBacklog" (change)="setStatus('Backlog')"/>
+      <label class="form-check-label">Backlog</label>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="form-check">
+      <input type="checkbox" [checked]="checkProgress" (change)="setStatus('In progress')"/>
+      <label class="form-check-label">W realizacji</label>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="form-check">
+      <input type="checkbox" [checked]="checkDone" (change)="setStatus('Done')"/>
+      <label class="form-check-label">Zakończone</label>
+    </div>
+  </div>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Tytuł</th>
+    <th scope="col">Czas spędzony</th>
+    <th scope="col">Czas zaplanowany</th>
+    <th scope="col">Do końca</th>
+    <th scope="col">Status</th>
+    <th scope="col">Użytkownik</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of tasks" [class]="(item.planningTime - item.workedTime)<=0?'delay':''">
+    <td>{{item.title}}</td>
+    <td>{{item.workedTime}}</td>
+    <td>{{item.planningTime}}</td>
+    <td>{{item.planningTime - item.workedTime}}</td>
+    <td>{{item.status}}</td>
+    <td>{{item.userId}}</td>
+  </tr>
+
+  </tbody>
+</table>
+
+
